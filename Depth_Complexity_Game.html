@@ -1,4 +1,466 @@
 
-<a class="play" href="Depth_Complexity_Game.html">
-  Play Depth & Complexity →
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depth & Complexity Challenge</title>
+<style>
+:root {
+  font-family:Arial,sans-serif;
+  color:#1b2842;
+  background:#f6f2e9;
+}
+* {box-sizing:border-box}
+body {margin:0}
+header {
+  background:#1b2842;
+  color:white;
+  padding:28px 18px;
+  text-align:center;
+}
+header h1 {margin:0 0 10px}
+header p {margin:0;color:#dce4f4}
+main {max-width:1050px;margin:auto;padding:22px}
+.panel {
+  background:white;
+  border:1px solid #ddd6c8;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:0 5px 18px #1b284210;
+}
+label {display:block;font-weight:bold;margin:12px 0 6px}
+input,select,textarea {
+  width:100%;
+  padding:12px;
+  border:1px solid #aab4c4;
+  border-radius:9px;
+  font:inherit;
+}
+textarea {min-height:135px;resize:vertical}
+button {
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
+  background:#5534b8;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin:5px 5px 5px 0;
+}
+button:hover {background:#40258f}
+button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible {
+  outline:3px solid #f7b733;
+}
+.secondary {background:#27718b}
+.icons {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:10px;
+  margin-top:16px;
+}
+.icon {
+  background:#f3efff;
+  border:2px solid #ded5fa;
+  color:#1b2842;
+  min-height:105px;
+  padding:12px;
+}
+.icon.selected {
+  border-color:#5534b8;
+  background:#dfd3ff;
+}
+.symbol {display:block;font-size:30px;margin-bottom:8px}
+.question {
+  background:#f1edff;
+  border-left:5px solid #5534b8;
+  border-radius:8px;
+  padding:20px;
+  margin:15px 0;
+  font-size:19px;
+  line-height:1.5;
+}
+.small {color:#52627b;font-size:14px}
+.hidden {display:none}
+.entry {
+  border-top:1px solid #ddd;
+  padding:15px 0;
+  overflow-wrap:anywhere;
+}
+.entry p {white-space:pre-wrap}
+.status {font-weight:bold;color:#23634d}
+@media print {
+  header,.controls,.icons,button {display:none!important}
+  .panel {box-shadow:none}
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1>🧠 Depth & Complexity Challenge</h1>
+<p>Look deeper. Think differently. Support your ideas with evidence.</p>
+</header>
+
+<main>
+<section class="panel">
+<h2>1. Choose Your Focus</h2>
+<p>Think about a story, informational text, science topic, historical event, or problem.</p>
+
+<label for="student">Your Name</label>
+<input id="student" placeholder="First and last name">
+
+<label for="focus">What are you studying?</label>
+<input id="focus" placeholder="Example: Renewable energy">
+
+<label for="level">Question Level</label>
+<select id="level">
+<option value="0">Level 1 — Identify & Describe</option>
+<option value="1">Level 2 — Analyze & Connect</option>
+<option value="2">Level 3 — Evaluate & Extend</option>
+</select>
+</section>
+
+<section class="panel controls">
+<h2>2. Choose Your Thinking Challenge</h2>
+<p>Select a thinking lens, or let the arcade choose for you!</p>
+
+<button type="button" onclick="randomChallenge()">
+🎲 Surprise Me!
+</button>
+
+<button type="button" class="secondary" onclick="randomLevel()">
+🎯 Random Level & Lens
+</button>
+
+<div id="icons" class="icons"></div>
+</section>
+
+<section class="panel">
+<h2>3. Think Deeply</h2>
+<p id="selectedLens" class="small">Choose a thinking lens above.</p>
+
+<div id="question" class="question">
+Your thinking question will appear here.
+</div>
+
+<label for="answer">Explain Your Thinking</label>
+<textarea id="answer" placeholder="Write a complete explanation. Include specific details, examples, or evidence."></textarea>
+
+<label for="evidence">Evidence or Examples</label>
+<textarea id="evidence" placeholder="What information supports your ideas?"></textarea>
+
+<button type="button" onclick="saveResponse()">
+💾 Save to My Journal
+</button>
+
+<button type="button" class="secondary" onclick="newChallenge()">
+🔄 New Challenge
+</button>
+
+<p id="message" class="status" role="status"></p>
+</section>
+
+<section class="panel">
+<h2>4. My Thinking Journal</h2>
+<p class="small">Your responses are saved in this browser. Export your work before leaving a shared Chromebook.</p>
+
+<div id="journal"></div>
+
+<button type="button" onclick="exportJournal()">
+📄 Export My Journal
+</button>
+
+<button type="button" class="secondary" onclick="window.print()">
+🖨️ Print
+</button>
+</section>
+</main>
+
+<script>
+const lenses = [
+{
+ name:"Language of the Discipline",
+ icon:"📚",
+ questions:[
+  "What important vocabulary is used in this topic?",
+  "How does specialized vocabulary help explain this topic?",
+  "How might understanding the language of this discipline change your interpretation?"
+ ]
+},
+{
+ name:"Details",
+ icon:"🔎",
+ questions:[
+  "What important details can you identify?",
+  "Which details are most significant, and how are they connected?",
+  "How might the meaning change if an important detail were different?"
+ ]
+},
+{
+ name:"Patterns",
+ icon:"🔁",
+ questions:[
+  "What patterns do you notice?",
+  "What might explain these patterns?",
+  "How could these patterns help predict what happens next?"
+ ]
+},
+{
+ name:"Unanswered Questions",
+ icon:"❓",
+ questions:[
+  "What questions remain unanswered?",
+  "Why are these questions important to understanding the topic?",
+  "Which unanswered question deserves further investigation, and how would you investigate it?"
+ ]
+},
+{
+ name:"Rules",
+ icon:"📏",
+ questions:[
+  "What rules or principles apply to this topic?",
+  "How do these rules influence what happens?",
+  "What might happen if an important rule were changed or removed?"
+ ]
+},
+{
+ name:"Trends",
+ icon:"📈",
+ questions:[
+  "What trends can you identify?",
+  "What factors may be causing these trends?",
+  "How might these trends affect the future, and what evidence supports your prediction?"
+ ]
+},
+{
+ name:"Ethics",
+ icon:"⚖️",
+ questions:[
+  "What choices or actions raise questions about right and wrong?",
+  "Who benefits or is harmed by these choices?",
+  "What is the most responsible decision, and how would you defend it?"
+ ]
+},
+{
+ name:"Big Ideas",
+ icon:"💡",
+ questions:[
+  "What is the main idea or important concept?",
+  "How do several details connect to a larger idea?",
+  "What universal lesson or principle can you develop and defend?"
+ ]
+},
+{
+ name:"Across the Disciplines",
+ icon:"🌐",
+ questions:[
+  "How does this topic connect to another subject?",
+  "How can ideas from two subjects help explain this topic?",
+  "How could combining knowledge from different disciplines lead to a new solution?"
+ ]
+},
+{
+ name:"Changes Over Time",
+ icon:"⏳",
+ questions:[
+  "How has this topic changed over time?",
+  "What caused these changes, and what stayed the same?",
+  "Which changes were most significant, and what might happen in the future?"
+ ]
+},
+{
+ name:"Different Perspectives",
+ icon:"👥",
+ questions:[
+  "Who might have a different point of view?",
+  "Why might people interpret this situation differently?",
+  "Which perspectives are most convincing, and how can you support your evaluation?"
+ ]
+}
+];
+
+let selected = -1;
+let journal = [];
+
+try {
+ const saved = localStorage.getItem("depth_complexity_journal");
+ if(saved) journal = JSON.parse(saved);
+ if(!Array.isArray(journal)) journal = [];
+} catch(error) {
+ journal = [];
+}
+
+function showIcons() {
+ const container = document.getElementById("icons");
+ container.innerHTML = "";
+
+ lenses.forEach((lens,index)=>{
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "icon" + (selected===index ? " selected" : "");
+  button.setAttribute("aria-pressed",String(selected===index));
+
+  const symbol = document.createElement("span");
+  symbol.className = "symbol";
+  symbol.textContent = lens.icon;
+
+  const name = document.createElement("span");
+  name.textContent = lens.name;
+
+  button.append(symbol,name);
+  button.addEventListener("click",()=>chooseLens(index));
+  container.appendChild(button);
+ });
+}
+
+function chooseLens(index) {
+ selected = index;
+ const lens = lenses[index];
+ const level = Number(document.getElementById("level").value);
+
+ document.getElementById("selectedLens").textContent =
+  lens.icon + " " + lens.name + " — Level " + (level+1);
+
+ document.getElementById("question").textContent =
+  lens.questions[level];
+
+ document.getElementById("message").textContent = "";
+ showIcons();
+}
+
+function randomChallenge() {
+ const index = Math.floor(Math.random()*lenses.length);
+ chooseLens(index);
+}
+
+function randomLevel() {
+ document.getElementById("level").value =
+  String(Math.floor(Math.random()*3));
+ randomChallenge();
+}
+
+function newChallenge() {
+ document.getElementById("answer").value = "";
+ document.getElementById("evidence").value = "";
+ randomChallenge();
+}
+
+function saveResponse() {
+ const name = document.getElementById("student").value.trim();
+ const focus = document.getElementById("focus").value.trim();
+ const answer = document.getElementById("answer").value.trim();
+ const evidence = document.getElementById("evidence").value.trim();
+ const message = document.getElementById("message");
+
+ if(selected<0) {
+  message.textContent = "Please choose a thinking lens first.";
+  return;
+ }
+ if(!focus || !answer) {
+  message.textContent = "Please enter your topic and explanation.";
+  return;
+ }
+
+ const level = Number(document.getElementById("level").value);
+ journal.push({
+  name:name || "Student",
+  focus,
+  lens:lenses[selected].name,
+  level:level+1,
+  question:lenses[selected].questions[level],
+  answer,
+  evidence,
+  date:new Date().toLocaleString()
+ });
+
+ try {
+  localStorage.setItem("depth_complexity_journal",JSON.stringify(journal));
+ } catch(error) {
+  // Students can still export their work.
+ }
+
+ renderJournal();
+ message.textContent = "Your response was added to your journal!";
+}
+
+function renderJournal() {
+ const container = document.getElementById("journal");
+ container.innerHTML = "";
+
+ if(journal.length===0) {
+  container.textContent = "No responses saved yet.";
+  return;
+ }
+
+ journal.forEach((entry,index)=>{
+  const section = document.createElement("div");
+  section.className = "entry";
+
+  const title = document.createElement("h3");
+  title.textContent = (index+1)+". "+entry.lens+
+   " — Level "+entry.level;
+
+  const info = document.createElement("p");
+  info.textContent = entry.name+" | "+entry.focus+
+   " | "+entry.date;
+
+  const question = document.createElement("p");
+  question.textContent = "Question: "+entry.question;
+
+  const answer = document.createElement("p");
+  answer.textContent = "Explanation: "+entry.answer;
+
+  const evidence = document.createElement("p");
+  evidence.textContent = "Evidence: "+(entry.evidence || "Not entered");
+
+  section.append(title,info,question,answer,evidence);
+  container.appendChild(section);
+ });
+}
+
+function exportJournal() {
+ if(journal.length===0) {
+  alert("Save a response first.");
+  return;
+ }
+
+ const lines = ["DEPTH & COMPLEXITY THINKING JOURNAL",""];
+
+ journal.forEach((entry,index)=>{
+  lines.push(
+   "Challenge "+(index+1),
+   "Student: "+entry.name,
+   "Focus: "+entry.focus,
+   "Lens: "+entry.lens,
+   "Level: "+entry.level,
+   "Question: "+entry.question,
+   "Explanation: "+entry.answer,
+   "Evidence: "+entry.evidence,
+   "Date: "+entry.date,
+   ""
+  );
+ });
+
+ const blob = new Blob([lines.join("\n")],{
+  type:"text/plain;charset=utf-8"
+ });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement("a");
+ link.href = url;
+ link.download = "depth-complexity-journal.txt";
+ link.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+document.getElementById("level").addEventListener("change",()=>{
+ if(selected>=0) chooseLens(selected);
+});
+
+showIcons();
+renderJournal();
+</script>
+</body>
+</html>
