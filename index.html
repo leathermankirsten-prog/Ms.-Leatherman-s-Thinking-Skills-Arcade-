@@ -8,139 +8,70 @@
 <style>
 *{box-sizing:border-box}
 :root{
- --navy:#172344;
- --purple:#7550c8;
- --pink:#ec64a5;
- --teal:#18a9a4;
- --gold:#f3b943;
- --blue:#4d83e5;
+ --navy:#172344;--purple:#7550c8;--pink:#ec64a5;
+ --teal:#18a9a4;--gold:#f3b943;--blue:#4d83e5;
  --green:#51ad78;
 }
 body{
- margin:0;
- font-family:"Trebuchet MS",Arial,sans-serif;
- background:#f6f3ff;
- color:#26314c;
+ margin:0;font-family:"Trebuchet MS",Arial,sans-serif;
+ background:#f6f3ff;color:#26314c;
 }
 header{
  background:linear-gradient(135deg,#35216e,#7651c8,#258db1);
- color:white;
- text-align:center;
- padding:42px 18px;
+ color:white;text-align:center;padding:42px 18px;
 }
-header h1{
- font-size:clamp(30px,5vw,52px);
- margin:12px 0;
-}
+header h1{font-size:clamp(30px,5vw,52px);margin:12px 0}
 header p{font-size:17px}
 .stars{font-size:30px}
-main{
- max-width:1200px;
- margin:auto;
- padding:25px 18px 60px;
-}
+main{max-width:1200px;margin:auto;padding:25px 18px 60px}
 .welcome,.panel{
- background:white;
- border-radius:20px;
- padding:24px;
- box-shadow:0 4px 18px #30205b12;
- margin-bottom:25px;
+ background:white;border-radius:20px;padding:24px;
+ box-shadow:0 4px 18px #30205b12;margin-bottom:25px;
 }
 .welcome{text-align:center}
 .welcome h2{color:#6240b7}
 .featured{
- display:block;
- width:100%;
- border:0;
- border-radius:24px;
- padding:30px;
- text-align:left;
- color:white;
+ display:block;width:100%;border:0;border-radius:24px;
+ padding:30px;text-align:left;color:white;
  background:linear-gradient(120deg,#673ab7,#a450ca,#e36ca9);
- cursor:pointer;
- font:inherit;
- box-shadow:0 8px 24px #5a358b30;
+ cursor:pointer;font:inherit;box-shadow:0 8px 24px #5a358b30;
 }
-.featured h2{
- font-size:clamp(25px,4vw,36px);
- margin:12px 0;
-}
+.featured h2{font-size:clamp(25px,4vw,36px);margin:12px 0}
 .featured p{font-size:17px;line-height:1.5}
 .featured .emoji{font-size:45px}
 .play-label{
- display:inline-block;
- background:white;
- color:#673ab7;
- border-radius:30px;
- padding:12px 20px;
- font-weight:bold;
- margin-top:10px;
+ display:inline-block;background:white;color:#673ab7;
+ border-radius:30px;padding:12px 20px;font-weight:bold;margin-top:10px;
 }
 .protocol-link{
- display:block;
- width:100%;
- margin:14px 0 32px;
- padding:19px;
- background:#e7faf7;
- color:#176d69;
- border:2px solid #18a9a4;
- border-radius:17px;
- font:inherit;
- font-size:19px;
- font-weight:bold;
- text-align:center;
- cursor:pointer;
+ display:block;width:100%;margin:14px 0 32px;padding:19px;
+ background:#e7faf7;color:#176d69;border:2px solid #18a9a4;
+ border-radius:17px;font:inherit;font-size:19px;
+ font-weight:bold;text-align:center;cursor:pointer;
 }
 .protocol-link:hover{background:#d0f3ed}
-.section-title{
- color:#38286c;
- font-size:27px;
- margin:32px 0 20px;
-}
+.section-title{color:#38286c;font-size:27px;margin:32px 0 20px}
 .games{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
  gap:18px;
 }
 .game{
- display:flex;
- flex-direction:column;
- background:white;
- border:0;
- border-top:7px solid var(--purple);
- border-radius:20px;
- padding:22px;
- text-align:left;
- color:#26314c;
- cursor:pointer;
- min-height:195px;
- font:inherit;
- box-shadow:0 4px 15px #30205b12;
+ display:flex;flex-direction:column;background:white;border:0;
+ border-top:7px solid var(--purple);border-radius:20px;
+ padding:22px;text-align:left;color:#26314c;cursor:pointer;
+ min-height:195px;font:inherit;box-shadow:0 4px 15px #30205b12;
  transition:transform .2s,box-shadow .2s;
 }
 .game:hover,.featured:hover{
- transform:translateY(-4px);
- box-shadow:0 10px 25px #30205b25;
+ transform:translateY(-4px);box-shadow:0 10px 25px #30205b25;
 }
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible{
- outline:3px solid #f3b943;
- outline-offset:3px;
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+ outline:3px solid #f3b943;outline-offset:3px;
 }
 .game .emoji{font-size:35px}
 .game h3{font-size:21px;margin:13px 0 8px}
-.game p{
- font-size:14px;
- line-height:1.5;
- flex:1;
-}
-.game .play{
- color:#6142ac;
- font-weight:bold;
- margin-top:12px;
-}
+.game p{font-size:14px;line-height:1.5;flex:1}
+.game .play{color:#6142ac;font-weight:bold;margin-top:12px}
 .pink{border-color:var(--pink)}
 .teal{border-color:var(--teal)}
 .gold{border-color:var(--gold)}
@@ -148,165 +79,92 @@ select:focus-visible{
 .green{border-color:var(--green)}
 .purple{border-color:var(--purple)}
 .protocol-intro{
- background:#e9e2fa;
- padding:22px;
- border-radius:18px;
- margin-bottom:20px;
- line-height:1.6;
+ background:#e9e2fa;padding:22px;border-radius:18px;
+ margin-bottom:20px;line-height:1.6;
 }
 #protocols{scroll-margin-top:20px}
 .protocol-card{border-top-color:#18a9a4}
-#player{
- display:none;
- min-height:100vh;
- background:#f6f3ff;
-}
+#player,#protocolPlayer{display:none;min-height:100vh}
 .playerbar{
- display:flex;
- align-items:center;
- flex-wrap:wrap;
- gap:12px;
- padding:15px 20px;
- background:var(--navy);
- color:white;
+ display:flex;align-items:center;flex-wrap:wrap;gap:12px;
+ padding:15px 20px;background:var(--navy);color:white;
 }
 .playerbar button,.action{
- border:0;
- border-radius:10px;
- background:#6240b7;
- color:white;
- padding:12px 17px;
- cursor:pointer;
- font:inherit;
- font-weight:bold;
+ border:0;border-radius:10px;background:#6240b7;color:white;
+ padding:12px 17px;cursor:pointer;font:inherit;font-weight:bold;
 }
-.playerbar button{
- background:#ffda70;
- color:var(--navy);
-}
+.playerbar button{background:#ffda70;color:var(--navy)}
 #playerTitle{font-size:19px;font-weight:bold}
 #gameFrame{
- display:block;
- width:100%;
- height:calc(100vh - 85px);
- min-height:650px;
- border:0;
- background:white;
+ display:block;width:100%;height:calc(100vh - 85px);
+ min-height:650px;border:0;background:white;
 }
-#loading{
- text-align:center;
- padding:12px;
- color:#6240b7;
-}
-#protocolPlayer{
- display:none;
- min-height:100vh;
-}
-.protocol-main{
- max-width:950px;
- margin:auto;
- padding:25px 16px 60px;
-}
+#loading{text-align:center;padding:12px;color:#6240b7}
+.protocol-main{max-width:950px;margin:auto;padding:25px 16px 60px}
 .protocol-hero{
  background:linear-gradient(135deg,#165c72,#18a9a4);
- color:white;
- padding:28px;
- border-radius:22px;
- margin-bottom:22px;
+ color:white;padding:28px;border-radius:22px;margin-bottom:22px;
 }
 .protocol-hero h1{margin:8px 0}
 .protocol-hero p{line-height:1.5}
 .protocol-topline{
- font-weight:bold;
- letter-spacing:1px;
- text-transform:uppercase;
- font-size:13px;
+ font-weight:bold;letter-spacing:1px;
+ text-transform:uppercase;font-size:13px;
 }
-label{
- display:block;
- font-weight:bold;
- margin:14px 0 7px;
-}
+label{display:block;font-weight:bold;margin:14px 0 7px}
 input[type=text],textarea{
- width:100%;
- border:1px solid #b6b3c8;
- border-radius:12px;
- padding:13px;
- font:inherit;
- background:white;
+ width:100%;border:1px solid #b6b3c8;border-radius:12px;
+ padding:13px;font:inherit;background:white;
 }
-textarea{
- min-height:115px;
- resize:vertical;
- line-height:1.5;
-}
-.steps{
- margin:15px 0;
- padding-left:25px;
- line-height:1.8;
-}
+textarea{min-height:115px;resize:vertical;line-height:1.5}
+.steps{margin:15px 0;padding-left:25px;line-height:1.8}
 .steps li{padding:5px 0}
-.step-counter{
- color:#6042a1;
- font-weight:bold;
-}
+.step-counter{color:#6042a1;font-weight:bold}
 .question-box{
- border-left:5px solid #18a9a4;
- background:#effbf9;
- padding:18px;
- border-radius:12px;
- margin:18px 0;
+ border-left:5px solid #18a9a4;background:#effbf9;
+ padding:18px;border-radius:12px;margin:18px 0;
 }
 .question-box h3{margin:0 0 10px}
 .question-box p{line-height:1.5}
 .protocol-buttons{
- display:flex;
- flex-wrap:wrap;
- gap:10px;
- margin-top:18px;
+ display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
 }
-.action.secondary{
- background:#e9e2fa;
- color:#30224f;
-}
+.action.secondary{background:#e9e2fa;color:#30224f}
 .action:disabled{opacity:.4;cursor:not-allowed}
-#status{
- color:#3d5470;
- font-size:14px;
- margin-top:12px;
-}
+#status{color:#3d5470;font-size:14px;margin-top:12px}
 .hat-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
- gap:10px;
- margin-top:14px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+ gap:10px;margin-top:14px;
 }
 .hat{
- padding:13px;
- border:2px solid #ddd;
- border-radius:12px;
- background:white;
- cursor:pointer;
- font:inherit;
+ padding:13px;border:2px solid #ddd;border-radius:12px;
+ background:white;cursor:pointer;font:inherit;
 }
 .hat.active{outline:3px solid #7550c8}
 .progress{
- height:10px;
- background:#e7e1f5;
- border-radius:10px;
- overflow:hidden;
- margin:15px 0;
+ height:10px;background:#e7e1f5;border-radius:10px;
+ overflow:hidden;margin:15px 0;
 }
-.progress div{
- height:100%;
- background:#18a9a4;
- transition:width .2s;
+.progress div{height:100%;background:#18a9a4;transition:width .2s}
+
+/* Inner–Outer Circle note-taking organizer */
+#circleOrganizer{display:none}
+.circle-role{
+ background:#e7faf7;border-left:5px solid #18a9a4;
+ border-radius:12px;padding:18px;line-height:1.6;
+}
+.circle-note{
+ background:#f7f5fc;border:1px solid #ded6ef;
+ border-radius:16px;padding:18px;margin:16px 0;
+}
+.circle-note h3{margin:0 0 10px;color:#493080}
+.circle-note textarea{min-height:150px}
+.circle-note p{font-size:14px;color:#52617a}
+.circle-organizer-actions{
+ display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;
 }
 footer{
- text-align:center;
- padding:25px;
- background:var(--navy);
- color:white;
+ text-align:center;padding:25px;background:var(--navy);color:white;
 }
 @media(max-width:550px){
  .games{grid-template-columns:1fr}
@@ -334,14 +192,13 @@ footer{
 </section>
 
 <button class="featured" onclick="openGame(
- 'Depth & Complexity Challenge',
- 'Depth_Complexity_Game.html')">
+ 'Depth & Complexity Challenge','Depth_Complexity_Game.html')">
  <div class="emoji">🧠 🔍 ⭐</div>
  <h2>Depth &amp; Complexity Challenge</h2>
  <p>
- Explore big ideas using Depth and Complexity thinking
- lenses. Investigate patterns, uncover details, ask
- questions, and support your thinking with evidence.
+ Explore big ideas using Depth and Complexity thinking lenses.
+ Investigate patterns, uncover details, ask questions, and
+ support your thinking with evidence.
  </p>
  <span class="play-label">⭐ START THINKING →</span>
 </button>
@@ -358,14 +215,12 @@ footer{
  <div class="protocol-intro">
   <strong>Think • Discuss • Reflect</strong>
   <p>
-   These thinking routines help you explore ideas,
-   listen to others, support your reasoning, and
-   reflect on what you have learned.
+   These thinking routines help you explore ideas, listen to
+   others, support your reasoning, and reflect on what you learn.
   </p>
   <p>
-   Choose a protocol below. Follow the steps,
-   record your thinking, and share your ideas
-   with a partner or group when directed.
+   Choose a protocol below. Follow the steps, record your
+   thinking, and share your ideas when directed.
   </p>
  </div>
  <div class="games" id="protocolGrid"></div>
@@ -379,7 +234,6 @@ footer{
 </div>
 
 <!-- EXISTING GAME PLAYER -->
-
 <section id="player">
  <div class="playerbar">
   <button onclick="goHome()">← All Games</button>
@@ -390,13 +244,13 @@ footer{
   title="Interactive Thinking Skills Game"></iframe>
 </section>
 
-<!-- INTERACTIVE PROTOCOL PLAYER -->
-
+<!-- PROTOCOL PLAYER -->
 <section id="protocolPlayer">
  <div class="playerbar">
   <button onclick="goHome(true)">← Protocols</button>
   <span id="protocolBarTitle">Discussion Protocol</span>
  </div>
+
  <div class="protocol-main">
   <div class="protocol-hero">
    <div class="protocol-topline">💬 Discussion Protocols</div>
@@ -408,63 +262,97 @@ footer{
    <label for="studentName">Your name (optional)</label>
    <input id="studentName" type="text"
     placeholder="Enter your name">
-
    <label for="topicInput">Our text, topic, image, or question</label>
    <textarea id="topicInput"
     placeholder="What are you investigating or discussing?"></textarea>
   </div>
 
-  <div class="panel">
-   <h2>How to use this protocol</h2>
-   <ol class="steps" id="protocolSteps"></ol>
+  <!-- GENERAL PROTOCOLS -->
+  <div id="generalProtocol">
+   <div class="panel">
+    <h2>How to use this protocol</h2>
+    <ol class="steps" id="protocolSteps"></ol>
+   </div>
+
+   <div class="panel">
+    <div class="step-counter" id="stepCounter"></div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="question-box">
+     <h3 id="questionTitle"></h3>
+     <p id="questionPrompt"></p>
+    </div>
+    <div id="extraControls"></div>
+    <label for="responseInput">Record your thinking</label>
+    <textarea id="responseInput"
+     placeholder="Type your response, evidence, questions, or reflections..."></textarea>
+
+    <div class="protocol-buttons">
+     <button class="action secondary" id="previousStep"
+      onclick="moveStep(-1)">← Previous</button>
+     <button class="action" id="nextStep"
+      onclick="moveStep(1)">Next Step →</button>
+     <button class="action secondary"
+      onclick="saveWork()">💾 Save Progress</button>
+     <button class="action secondary"
+      onclick="exportWork()">⬇ Export Responses</button>
+     <button class="action secondary"
+      onclick="restartProtocol()">↻ Start Over</button>
+    </div>
+    <div id="status" role="status" aria-live="polite"></div>
+   </div>
+
+   <div class="panel">
+    <h2>🗣️ Share and Reflect</h2>
+    <p>
+     When your teacher directs you, share your thinking
+     with a partner or group. Listen carefully and
+     consider different viewpoints.
+    </p>
+    <label for="finalReflection">
+     What did you learn, reconsider, or wonder?
+    </label>
+    <textarea id="finalReflection"
+     placeholder="My thinking changed because..."></textarea>
+    <button class="action" onclick="saveWork()">
+     Save Reflection
+    </button>
+   </div>
   </div>
 
-  <div class="panel">
-   <div class="step-counter" id="stepCounter"></div>
-   <div class="progress"><div id="progressBar"></div></div>
-   <div class="question-box">
-    <h3 id="questionTitle"></h3>
-    <p id="questionPrompt"></p>
-   </div>
-   <div id="extraControls"></div>
-   <label for="responseInput">Record your thinking</label>
-   <textarea id="responseInput"
-    placeholder="Type your response, evidence, questions, or reflections..."></textarea>
+  <!-- INNER–OUTER CIRCLE ONLY -->
+  <div id="circleOrganizer">
+   <div class="panel">
+    <div class="circle-role">
+     <strong>Your role:</strong>
+     You are an observer in the outer circle. Listen
+     carefully to the students discussing in the inner
+     circle. Capture their important ideas, examples,
+     questions, and connections. After the discussion,
+     use your notes to reflect on what you learned.
+    </div>
 
-   <div class="protocol-buttons">
-    <button class="action secondary"
-     id="previousStep" onclick="moveStep(-1)">
-     ← Previous
-    </button>
-    <button class="action"
-     id="nextStep" onclick="moveStep(1)">
-     Next Step →
-    </button>
-    <button class="action secondary"
-     onclick="saveWork()">💾 Save Progress</button>
-    <button class="action secondary"
-     onclick="exportWork()">⬇ Export Responses</button>
-    <button class="action secondary"
-     onclick="restartProtocol()">↻ Start Over</button>
-   </div>
-   <div id="status" role="status" aria-live="polite"></div>
-  </div>
+    <h2>🔄 Discussion Observation Organizer</h2>
+    <p>
+     Listen and capture your thinking as the inner
+     circle discusses. You are observing, not
+     participating in the conversation.
+    </p>
 
-  <div class="panel">
-   <h2>🗣️ Share and Reflect</h2>
-   <p>
-    When your teacher directs you, share your
-    thinking with a partner or group. Listen
-    carefully and consider different viewpoints.
-   </p>
-   <label for="finalReflection">
-    What did you learn, reconsider, or wonder?
-   </label>
-   <textarea id="finalReflection"
-    placeholder="My thinking changed because..."></textarea>
-   <button class="action" onclick="saveWork()">
-    Save Reflection
-   </button>
+    <div id="circleFields"></div>
+
+    <div class="circle-organizer-actions">
+     <button class="action" onclick="saveWork()">
+      💾 Save Notes
+     </button>
+     <button class="action secondary" onclick="exportWork()">
+      ⬇ Export Notes
+     </button>
+     <button class="action secondary" onclick="restartProtocol()">
+      ↻ Clear Organizer
+     </button>
+    </div>
+    <div id="circleStatus" role="status" aria-live="polite"></div>
+   </div>
   </div>
  </div>
 </section>
@@ -472,7 +360,7 @@ footer{
 <script>
 "use strict";
 
-/* THE ORIGINAL 25 GAMES */
+/* ALL 25 GAME CARDS + FEATURED DEPTH & COMPLEXITY */
 
 const games=[
 ["Connection Quest","Discover surprising connections between ideas.","🔗","teal","connection-quest.html"],
@@ -502,20 +390,11 @@ const games=[
 ["Deep-Sea Debate","Make a claim, support it with evidence, and consider another viewpoint.","🌊","blue","claims"]
 ];
 
-/*
- DISCUSSION PROTOCOLS
- Based on the uploaded classroom resources.
- Only slides 8, 17, 18 and 21 are included
- from the Protocol Slides document.
-*/
+/* DISCUSSION PROTOCOLS */
 
 const protocols=[
-
 {
- id:"optic",
- name:"OPTIC",
- emoji:"👁️",
- color:"teal",
+ id:"optic",name:"OPTIC",emoji:"👁️",color:"teal",
  description:"Analyze a picture, diagram, chart, or visual text using five thinking steps.",
  steps:[
  "Choose a visual to study carefully.",
@@ -533,12 +412,8 @@ const protocols=[
  ["C — Conclusion","What conclusion can you make? Summarize the message in one or two sentences."]
  ]
 },
-
 {
- id:"qtip",
- name:"Q-TIP",
- emoji:"❓",
- color:"purple",
+ id:"qtip",name:"Q-TIP",emoji:"❓",color:"purple",
  description:"Explore questions, troubles, intriguing ideas, and your strengths.",
  steps:[
  "Read, observe, or investigate the topic.",
@@ -554,12 +429,8 @@ const protocols=[
  ["P — Propels","What strengths do you have in this content area?"]
  ]
 },
-
 {
- id:"hats",
- name:"Six Thinking Hats",
- emoji:"🎩",
- color:"gold",
+ id:"hats",name:"Six Thinking Hats",emoji:"🎩",color:"gold",
  description:"Consider a topic through six different thinking perspectives.",
  steps:[
  "Choose or receive an assigned thinking hat.",
@@ -577,35 +448,23 @@ const protocols=[
  ["🔵 Blue Hat — Process","What is our goal? What have we learned, and what should we do next?"]
  ]
 },
-
 {
- id:"circle",
- name:"Inner–Outer Circle",
- emoji:"🔄",
- color:"blue",
- description:"Share your thinking, practice listening, and reflect on a partner's ideas.",
- steps:[
- "Form two circles, one inside the other.",
- "Face a partner in the opposite circle.",
- "Share your thinking while your partner listens.",
- "Switch roles so both partners contribute.",
- "Rotate to a new partner when directed.",
- "Reflect on the discussion."
- ],
+ id:"circle",name:"Inner–Outer Circle",emoji:"🔄",color:"blue",
+ description:"Observe the inner-circle discussion and capture ideas using a digital note-taking organizer.",
+ steps:[],
  questions:[
- ["My First Thinking","What do I think about the topic before discussing it?"],
- ["Listening to My Partner","What did my partner say that I hadn't realized on my own?"],
- ["What I Wanted to Add","What did I want to jump in and say?"],
- ["A Good Listener","What did I notice about someone who was a good listener?"],
- ["My Concluding Thoughts","What are my concluding thoughts about the text or topic?"]
+ ["What did my partner say that I hadn't realized on my own?",
+  "Record important ideas shared by the inner circle."],
+ ["What did I want to jump in and say?",
+  "Record the thoughts you had while listening."],
+ ["What did I notice about someone who was a good listener?",
+  "Record your observations of good listening."],
+ ["What are my concluding thoughts about the text or topic?",
+  "Summarize your thinking after listening to the discussion."]
  ]
 },
-
 {
- id:"fruit",
- name:"Peel the Fruit",
- emoji:"🍊",
- color:"green",
+ id:"fruit",name:"Peel the Fruit",emoji:"🍊",color:"green",
  description:"Move from surface observations to deeper explanations and central meaning.",
  steps:[
  "Begin with what you notice on the outside.",
@@ -624,12 +483,8 @@ const protocols=[
  ["6 — Capturing the Heart","What is the central idea or message?"]
  ]
 },
-
 {
- id:"chairs",
- name:"Philosophical Chairs",
- emoji:"🪑",
- color:"pink",
+ id:"chairs",name:"Philosophical Chairs",emoji:"🪑",color:"pink",
  description:"Take a position, support it, listen respectfully, and reconsider your thinking.",
  steps:[
  "Read the statement or question.",
@@ -646,12 +501,8 @@ const protocols=[
  ["Reflection","Did your opinion change? What evidence influenced you?"]
  ]
 },
-
 {
- id:"consensus",
- name:"Consensus Mats",
- emoji:"🤝",
- color:"teal",
+ id:"consensus",name:"Consensus Mats",emoji:"🤝",color:"teal",
  description:"Think independently, share everyone's ideas, and develop a group response.",
  steps:[
  "Read the question or idea.",
@@ -669,12 +520,8 @@ const protocols=[
  ["Debrief","How did working toward consensus affect our thinking?"]
  ]
 },
-
 {
- id:"mathchalk",
- name:"21st Century Chalk Talk",
- emoji:"🧮",
- color:"blue",
+ id:"mathchalk",name:"21st Century Chalk Talk",emoji:"🧮",color:"blue",
  description:"Solve a math word problem through four rounds of precise thinking.",
  steps:[
  "Round 1 — 3 minutes: Read, underline important words, and brainstorm three math words.",
@@ -689,12 +536,8 @@ const protocols=[
  ["Round 4 — Interpret","Explain how you solved the problem and what your answer means."]
  ]
 },
-
 {
- id:"testchalk",
- name:"Test Genre Chalk Talk",
- emoji:"📝",
- color:"gold",
+ id:"testchalk",name:"Test Genre Chalk Talk",emoji:"📝",color:"gold",
  description:"Discuss strategies for approaching assessment questions without answering them.",
  steps:[
  "Look at the practice reading or assessment questions.",
@@ -712,12 +555,8 @@ const protocols=[
  ["Strategy Reflection","Which strategy would you choose first, and why?"]
  ]
 },
-
 {
- id:"render",
- name:"Text Rendering Protocol",
- emoji:"📖",
- color:"purple",
+ id:"render",name:"Text Rendering Protocol",emoji:"📖",color:"purple",
  description:"Share a meaningful sentence, phrase, and word from a text.",
  steps:[
  "Read the text carefully.",
@@ -735,10 +574,9 @@ const protocols=[
  ["Debrief","How did narrowing from a sentence to a phrase to a word deepen your understanding?"]
  ]
 }
-
 ];
 
-/* CREATE ARCADE CARDS */
+/* BUILD GAME AND PROTOCOL CARDS */
 
 function makeCard(name,description,emoji,color,callback,extraClass=""){
  const button=document.createElement("button");
@@ -746,8 +584,7 @@ function makeCard(name,description,emoji,color,callback,extraClass=""){
  button.className="game "+color+" "+extraClass;
 
  const picture=document.createElement("div");
- picture.className="emoji";
- picture.textContent=emoji;
+ picture.className="emoji";picture.textContent=emoji;
 
  const heading=document.createElement("h3");
  heading.textContent=name;
@@ -756,8 +593,7 @@ function makeCard(name,description,emoji,color,callback,extraClass=""){
  details.textContent=description;
 
  const play=document.createElement("span");
- play.className="play";
- play.textContent="▶ Start Activity";
+ play.className="play";play.textContent="▶ Start Activity";
 
  button.append(picture,heading,details,play);
  button.addEventListener("click",callback);
@@ -767,8 +603,7 @@ function makeCard(name,description,emoji,color,callback,extraClass=""){
 const gameGrid=document.getElementById("gameGrid");
 games.forEach(g=>{
  gameGrid.appendChild(makeCard(
-  g[0],g[1],g[2],g[3],
-  ()=>openGame(g[0],g[4])
+  g[0],g[1],g[2],g[3],()=>openGame(g[0],g[4])
  ));
 });
 
@@ -794,7 +629,7 @@ function jumpToProtocols(){
 }
 
 function openGame(name,id){
- saveCurrentStep();
+ if(activeProtocol)saveCurrentStep();
 
  const thisLoad=++loadNumber;
  arcade.style.display="none";
@@ -812,12 +647,8 @@ function openGame(name,id){
   if(!standalone){
    try{
     const w=frame.contentWindow;
-    if(w && typeof w.start==="function"){
-     w.start(id);
-    }
-   }catch(e){
-    console.warn("Game selection unavailable:",e);
-   }
+    if(w&&typeof w.start==="function")w.start(id);
+   }catch(e){console.warn("Game selection unavailable:",e)}
   }
 
   document.getElementById("loading").style.display="none";
@@ -828,7 +659,7 @@ function openGame(name,id){
 }
 
 function goHome(showProtocols=false){
- saveCurrentStep();
+ if(activeProtocol)saveWork();
  ++loadNumber;
  frame.onload=null;
  frame.src="about:blank";
@@ -847,7 +678,7 @@ function goHome(showProtocols=false){
  }
 }
 
-/* PROTOCOL ACTIVITY SYSTEM */
+/* INTERACTIVE PROTOCOL SYSTEM */
 
 let activeProtocol=null;
 let activeStep=0;
@@ -861,9 +692,7 @@ function storageKey(){
 function readSaved(){
  try{
   return JSON.parse(localStorage.getItem(storageKey())||"null");
- }catch(e){
-  return null;
- }
+ }catch(e){return null}
 }
 
 function openProtocol(id){
@@ -876,7 +705,7 @@ function openProtocol(id){
  responses=Array(p.questions.length).fill("");
 
  const saved=readSaved();
- if(saved && Array.isArray(saved.responses)){
+ if(saved&&Array.isArray(saved.responses)){
   responses=p.questions.map((q,i)=>saved.responses[i]||"");
  }
 
@@ -888,32 +717,75 @@ function openProtocol(id){
  document.getElementById("protocolTitle").textContent=p.emoji+" "+p.name;
  document.getElementById("protocolDescription").textContent=p.description;
 
- const steps=document.getElementById("protocolSteps");
- steps.replaceChildren();
-
- p.steps.forEach(s=>{
-  const li=document.createElement("li");
-  li.textContent=s;
-  steps.appendChild(li);
- });
-
  document.getElementById("studentName").value=saved?.name||"";
  document.getElementById("topicInput").value=saved?.topic||"";
  document.getElementById("finalReflection").value=saved?.reflection||"";
 
- if(p.id==="hats" && Number.isInteger(saved?.hatChoice)){
-  hatChoice=saved.hatChoice;
-  activeStep=Math.max(0,Math.min(hatChoice,p.questions.length-1));
- }else if(Number.isInteger(saved?.step)){
-  activeStep=Math.max(0,Math.min(saved.step,p.questions.length-1));
+ const isCircle=p.id==="circle";
+ document.getElementById("generalProtocol").style.display=
+  isCircle?"none":"block";
+ document.getElementById("circleOrganizer").style.display=
+  isCircle?"block":"none";
+
+ if(isCircle){
+  buildCircleOrganizer();
+ }else{
+  const steps=document.getElementById("protocolSteps");
+  steps.replaceChildren();
+  p.steps.forEach(s=>{
+   const li=document.createElement("li");
+   li.textContent=s;
+   steps.appendChild(li);
+  });
+
+  if(p.id==="hats"&&Number.isInteger(saved?.hatChoice)){
+   hatChoice=saved.hatChoice;
+   activeStep=Math.max(0,Math.min(hatChoice,p.questions.length-1));
+  }else if(Number.isInteger(saved?.step)){
+   activeStep=Math.max(0,Math.min(saved.step,p.questions.length-1));
+  }
+
+  showStep();
  }
 
- showStep();
  window.scrollTo(0,0);
 }
 
+/* INNER–OUTER CIRCLE: ONE VISIBLE ORGANIZER */
+
+function buildCircleOrganizer(){
+ const container=document.getElementById("circleFields");
+ container.replaceChildren();
+
+ activeProtocol.questions.forEach((q,i)=>{
+  const section=document.createElement("div");
+  section.className="circle-note";
+
+  const title=document.createElement("h3");
+  title.textContent=(i+1)+". "+q[0];
+
+  const area=document.createElement("textarea");
+  area.id="circleResponse"+i;
+  area.setAttribute("aria-label",q[0]);
+  area.placeholder="Capture your notes here...";
+  area.value=responses[i]||"";
+
+  area.addEventListener("input",()=>{
+   responses[i]=area.value;
+  });
+
+  section.append(title,area);
+  container.appendChild(section);
+ });
+
+ document.getElementById("circleStatus").textContent=
+  "All four note-taking spaces are visible. Save or export when finished.";
+}
+
+/* OTHER NINE PROTOCOLS */
+
 function showStep(){
- if(!activeProtocol)return;
+ if(!activeProtocol||activeProtocol.id==="circle")return;
 
  const p=activeProtocol;
  const q=p.questions[activeStep];
@@ -929,11 +801,9 @@ function showStep(){
  document.getElementById("responseInput").value=responses[activeStep]||"";
 
  document.getElementById("previousStep").disabled=activeStep===0;
-
  document.getElementById("nextStep").textContent=
   activeStep===p.questions.length-1
-  ?"Finish & Reflect →"
-  :"Next Step →";
+  ?"Finish & Reflect →":"Next Step →";
 
  const extras=document.getElementById("extraControls");
  extras.replaceChildren();
@@ -965,23 +835,31 @@ function showStep(){
  }
 
  document.getElementById("status").textContent=
-  "Your responses can be saved on this Chromebook or exported.";
+  "Your responses can be saved or exported.";
 }
 
 function saveCurrentStep(){
  if(!activeProtocol)return;
+
+ if(activeProtocol.id==="circle"){
+  activeProtocol.questions.forEach((q,i)=>{
+   const field=document.getElementById("circleResponse"+i);
+   if(field)responses[i]=field.value;
+  });
+  return;
+ }
+
  const input=document.getElementById("responseInput");
- if(input && protocolPlayer.style.display==="block"){
+ if(input&&protocolPlayer.style.display==="block"){
   responses[activeStep]=input.value;
  }
 }
 
 function moveStep(direction){
- if(!activeProtocol)return;
+ if(!activeProtocol||activeProtocol.id==="circle")return;
  saveCurrentStep();
 
  const next=activeStep+direction;
-
  if(next>=activeProtocol.questions.length){
   saveWork();
   document.getElementById("finalReflection")
@@ -995,10 +873,12 @@ function moveStep(direction){
 
 function collectWork(){
  saveCurrentStep();
- return {
+ return{
   name:document.getElementById("studentName").value,
   topic:document.getElementById("topicInput").value,
-  reflection:document.getElementById("finalReflection").value,
+  reflection:activeProtocol.id==="circle"
+   ?""
+   :document.getElementById("finalReflection").value,
   responses:[...responses],
   step:activeStep,
   hatChoice:hatChoice
@@ -1008,17 +888,18 @@ function collectWork(){
 function saveWork(){
  if(!activeProtocol)return;
 
+ const statusId=activeProtocol.id==="circle"
+  ?"circleStatus":"status";
+
  try{
   localStorage.setItem(
-   storageKey(),
-   JSON.stringify(collectWork())
+   storageKey(),JSON.stringify(collectWork())
   );
-
-  document.getElementById("status").textContent=
+  document.getElementById(statusId).textContent=
    "✓ Progress saved in this browser.";
  }catch(e){
-  document.getElementById("status").textContent=
-   "Browser storage is unavailable. Use Export Responses instead.";
+  document.getElementById(statusId).textContent=
+   "Browser storage unavailable. Use Export instead.";
  }
 }
 
@@ -1034,38 +915,42 @@ function exportWork(){
   "Name: "+work.name+"\n"+
   "Topic: "+work.topic+"\n\n";
 
- p.questions.forEach((q,i)=>{
+ if(p.id==="circle"){
   output+=
-   (i+1)+". "+q[0]+"\n"+
-   q[1]+"\n"+
-   "Response: "+(work.responses[i]||"(not completed)")+
-   "\n\n";
+   "YOUR ROLE: You are an observer in the outer circle. "+
+   "Listen carefully to the students discussing in the inner circle. "+
+   "Capture their important ideas, examples, questions, and connections. "+
+   "After the discussion, use your notes to reflect on what you learned.\n\n";
+ }
+
+ p.questions.forEach((q,i)=>{
+  output+=(i+1)+". "+q[0]+"\n"+
+   (work.responses[i]||"(not completed)")+"\n\n";
  });
 
- output+="FINAL REFLECTION\n"+work.reflection+"\n";
+ if(p.id!=="circle"){
+  output+="FINAL REFLECTION\n"+work.reflection+"\n";
+ }
 
  const blob=new Blob([output],{type:"text/plain;charset=utf-8"});
  const url=URL.createObjectURL(blob);
  const a=document.createElement("a");
-
  a.href=url;
  a.download="thinking-protocol-"+p.id+".txt";
  document.body.appendChild(a);
  a.click();
  a.remove();
-
  setTimeout(()=>URL.revokeObjectURL(url),1000);
 
- document.getElementById("status").textContent=
+ const statusId=p.id==="circle"?"circleStatus":"status";
+ document.getElementById(statusId).textContent=
   "Responses exported as a text file.";
 }
 
 function restartProtocol(){
  if(!activeProtocol)return;
 
- if(!confirm("Start this protocol over and clear your saved responses?")){
-  return;
- }
+ if(!confirm("Start over and clear saved responses?"))return;
 
  localStorage.removeItem(storageKey());
  responses=Array(activeProtocol.questions.length).fill("");
@@ -1076,11 +961,16 @@ function restartProtocol(){
  document.getElementById("topicInput").value="";
  document.getElementById("finalReflection").value="";
 
- showStep();
- document.getElementById("status").textContent=
-  "Started a fresh activity.";
+ if(activeProtocol.id==="circle"){
+  buildCircleOrganizer();
+  document.getElementById("circleStatus").textContent=
+   "Started a fresh organizer.";
+ }else{
+  showStep();
+  document.getElementById("status").textContent=
+   "Started a fresh activity.";
+ }
 }
-
 </script>
 </body>
 </html>
