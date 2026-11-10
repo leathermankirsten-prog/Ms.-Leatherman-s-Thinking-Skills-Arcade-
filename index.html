@@ -5,549 +5,1082 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ms. Leatherman's Thinking Skills Arcade</title>
-
 <style>
 *{box-sizing:border-box}
-
+:root{
+ --navy:#172344;
+ --purple:#7550c8;
+ --pink:#ec64a5;
+ --teal:#18a9a4;
+ --gold:#f3b943;
+ --blue:#4d83e5;
+ --green:#51ad78;
+}
 body{
-  margin:0;
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  background:#f5f2ff;
-  color:#25304c;
+ margin:0;
+ font-family:"Trebuchet MS",Arial,sans-serif;
+ background:#f6f3ff;
+ color:#26314c;
 }
-
 header{
-  background:linear-gradient(135deg,#35216e,#7651c8,#258db1);
-  color:white;
-  text-align:center;
-  padding:42px 20px;
+ background:linear-gradient(135deg,#35216e,#7651c8,#258db1);
+ color:white;
+ text-align:center;
+ padding:42px 18px;
 }
-
 header h1{
-  font-size:clamp(30px,5vw,52px);
-  margin:12px 0;
+ font-size:clamp(30px,5vw,52px);
+ margin:12px 0;
 }
-
-header p{
-  font-size:17px;
-  margin:8px 0;
-}
-
+header p{font-size:17px}
 .stars{font-size:30px}
-
 main{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 18px 55px;
+ max-width:1200px;
+ margin:auto;
+ padding:25px 18px 60px;
 }
-
-.welcome{
-  background:white;
-  padding:24px;
-  border-radius:20px;
-  text-align:center;
-  margin-bottom:25px;
-  box-shadow:0 4px 16px #31245a12;
+.welcome,.panel{
+ background:white;
+ border-radius:20px;
+ padding:24px;
+ box-shadow:0 4px 18px #30205b12;
+ margin-bottom:25px;
 }
-
+.welcome{text-align:center}
 .welcome h2{color:#6240b7}
-
 .featured{
-  width:100%;
-  display:block;
-  text-align:left;
-  border:0;
-  cursor:pointer;
-  color:white;
-  padding:30px;
-  border-radius:24px;
-  background:linear-gradient(120deg,#673ab7,#a450ca,#e36ca9);
-  margin-bottom:30px;
-  box-shadow:0 8px 24px #5a358b30;
-  font:inherit;
+ display:block;
+ width:100%;
+ border:0;
+ border-radius:24px;
+ padding:30px;
+ text-align:left;
+ color:white;
+ background:linear-gradient(120deg,#673ab7,#a450ca,#e36ca9);
+ cursor:pointer;
+ font:inherit;
+ box-shadow:0 8px 24px #5a358b30;
 }
-
 .featured h2{
-  font-size:clamp(25px,4vw,35px);
-  margin:12px 0;
+ font-size:clamp(25px,4vw,36px);
+ margin:12px 0;
 }
-
-.featured p{
-  font-size:17px;
-  line-height:1.5;
-}
-
+.featured p{font-size:17px;line-height:1.5}
 .featured .emoji{font-size:45px}
-
-.featured .play{
-  display:inline-block;
-  background:white;
-  color:#673ab7;
-  padding:12px 20px;
-  border-radius:30px;
-  font-weight:bold;
-  margin-top:10px;
+.play-label{
+ display:inline-block;
+ background:white;
+ color:#673ab7;
+ border-radius:30px;
+ padding:12px 20px;
+ font-weight:bold;
+ margin-top:10px;
 }
-
+.protocol-link{
+ display:block;
+ width:100%;
+ margin:14px 0 32px;
+ padding:19px;
+ background:#e7faf7;
+ color:#176d69;
+ border:2px solid #18a9a4;
+ border-radius:17px;
+ font:inherit;
+ font-size:19px;
+ font-weight:bold;
+ text-align:center;
+ cursor:pointer;
+}
+.protocol-link:hover{background:#d0f3ed}
 .section-title{
-  font-size:27px;
-  color:#38286c;
-  margin:30px 0 20px;
+ color:#38286c;
+ font-size:27px;
+ margin:32px 0 20px;
 }
-
 .games{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px;
 }
-
 .game{
-  background:white;
-  border:0;
-  border-top:7px solid #7550c8;
-  border-radius:20px;
-  padding:22px;
-  text-align:left;
-  cursor:pointer;
-  min-height:205px;
-  display:flex;
-  flex-direction:column;
-  font:inherit;
-  color:#25304c;
-  box-shadow:0 4px 15px #30205b12;
-  transition:transform .2s,box-shadow .2s;
+ display:flex;
+ flex-direction:column;
+ background:white;
+ border:0;
+ border-top:7px solid var(--purple);
+ border-radius:20px;
+ padding:22px;
+ text-align:left;
+ color:#26314c;
+ cursor:pointer;
+ min-height:195px;
+ font:inherit;
+ box-shadow:0 4px 15px #30205b12;
+ transition:transform .2s,box-shadow .2s;
 }
-
 .game:hover,.featured:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 25px #30205b25;
+ transform:translateY(-4px);
+ box-shadow:0 10px 25px #30205b25;
 }
-
-button:focus-visible{
-  outline:4px solid #ffb43d;
-  outline-offset:3px;
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+ outline:3px solid #f3b943;
+ outline-offset:3px;
 }
-
 .game .emoji{font-size:35px}
-
-.game h3{
-  font-size:21px;
-  margin:13px 0 8px;
-}
-
+.game h3{font-size:21px;margin:13px 0 8px}
 .game p{
-  font-size:14px;
-  line-height:1.5;
-  flex:1;
+ font-size:14px;
+ line-height:1.5;
+ flex:1;
 }
-
 .game .play{
-  font-weight:bold;
-  color:#6142ac;
-  margin-top:12px;
+ color:#6142ac;
+ font-weight:bold;
+ margin-top:12px;
 }
-
-.pink{border-color:#ec64a5}
-.teal{border-color:#18a9a4}
-.gold{border-color:#f3b943}
-.blue{border-color:#4d83e5}
-.green{border-color:#51ad78}
-.purple{border-color:#7550c8}
-
+.pink{border-color:var(--pink)}
+.teal{border-color:var(--teal)}
+.gold{border-color:var(--gold)}
+.blue{border-color:var(--blue)}
+.green{border-color:var(--green)}
+.purple{border-color:var(--purple)}
+.protocol-intro{
+ background:#e9e2fa;
+ padding:22px;
+ border-radius:18px;
+ margin-bottom:20px;
+ line-height:1.6;
+}
+#protocols{scroll-margin-top:20px}
+.protocol-card{border-top-color:#18a9a4}
 #player{
-  display:none;
-  min-height:100vh;
-  background:#f5f2ff;
+ display:none;
+ min-height:100vh;
+ background:#f6f3ff;
 }
-
 .playerbar{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-  padding:15px 20px;
-  background:#172344;
-  color:white;
+ display:flex;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:12px;
+ padding:15px 20px;
+ background:var(--navy);
+ color:white;
 }
-
+.playerbar button,.action{
+ border:0;
+ border-radius:10px;
+ background:#6240b7;
+ color:white;
+ padding:12px 17px;
+ cursor:pointer;
+ font:inherit;
+ font-weight:bold;
+}
 .playerbar button{
-  border:0;
-  border-radius:10px;
-  background:#ffda70;
-  color:#172344;
-  font-weight:bold;
-  padding:12px 17px;
-  cursor:pointer;
-  font:inherit;
+ background:#ffda70;
+ color:var(--navy);
 }
-
-#playerTitle{
-  font-size:19px;
-  font-weight:bold;
-}
-
+#playerTitle{font-size:19px;font-weight:bold}
 #gameFrame{
-  display:block;
-  width:100%;
-  height:calc(100vh - 85px);
-  min-height:650px;
-  border:0;
-  background:white;
+ display:block;
+ width:100%;
+ height:calc(100vh - 85px);
+ min-height:650px;
+ border:0;
+ background:white;
 }
-
 #loading{
-  text-align:center;
-  padding:15px;
-  color:#6240b7;
+ text-align:center;
+ padding:12px;
+ color:#6240b7;
 }
-
+#protocolPlayer{
+ display:none;
+ min-height:100vh;
+}
+.protocol-main{
+ max-width:950px;
+ margin:auto;
+ padding:25px 16px 60px;
+}
+.protocol-hero{
+ background:linear-gradient(135deg,#165c72,#18a9a4);
+ color:white;
+ padding:28px;
+ border-radius:22px;
+ margin-bottom:22px;
+}
+.protocol-hero h1{margin:8px 0}
+.protocol-hero p{line-height:1.5}
+.protocol-topline{
+ font-weight:bold;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ font-size:13px;
+}
+label{
+ display:block;
+ font-weight:bold;
+ margin:14px 0 7px;
+}
+input[type=text],textarea{
+ width:100%;
+ border:1px solid #b6b3c8;
+ border-radius:12px;
+ padding:13px;
+ font:inherit;
+ background:white;
+}
+textarea{
+ min-height:115px;
+ resize:vertical;
+ line-height:1.5;
+}
+.steps{
+ margin:15px 0;
+ padding-left:25px;
+ line-height:1.8;
+}
+.steps li{padding:5px 0}
+.step-counter{
+ color:#6042a1;
+ font-weight:bold;
+}
+.question-box{
+ border-left:5px solid #18a9a4;
+ background:#effbf9;
+ padding:18px;
+ border-radius:12px;
+ margin:18px 0;
+}
+.question-box h3{margin:0 0 10px}
+.question-box p{line-height:1.5}
+.protocol-buttons{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:18px;
+}
+.action.secondary{
+ background:#e9e2fa;
+ color:#30224f;
+}
+.action:disabled{opacity:.4;cursor:not-allowed}
+#status{
+ color:#3d5470;
+ font-size:14px;
+ margin-top:12px;
+}
+.hat-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+ gap:10px;
+ margin-top:14px;
+}
+.hat{
+ padding:13px;
+ border:2px solid #ddd;
+ border-radius:12px;
+ background:white;
+ cursor:pointer;
+ font:inherit;
+}
+.hat.active{outline:3px solid #7550c8}
+.progress{
+ height:10px;
+ background:#e7e1f5;
+ border-radius:10px;
+ overflow:hidden;
+ margin:15px 0;
+}
+.progress div{
+ height:100%;
+ background:#18a9a4;
+ transition:width .2s;
+}
 footer{
-  text-align:center;
-  padding:25px;
-  background:#172344;
-  color:white;
+ text-align:center;
+ padding:25px;
+ background:var(--navy);
+ color:white;
 }
-
 @media(max-width:550px){
-  .games{grid-template-columns:1fr}
-  .game{min-height:155px}
-  #gameFrame{height:85vh}
+ .games{grid-template-columns:1fr}
+ .game{min-height:150px}
+ .protocol-hero{padding:20px}
+ #gameFrame{height:85vh}
 }
 </style>
 </head>
-
 <body>
 
 <div id="arcade">
-
 <header>
-  <div class="stars">⭐ 🧠 🎮 🧩 ⭐</div>
-  <h1>Ms. Leatherman's<br>Thinking Skills Arcade</h1>
-  <p>Think Deeply • Make Connections • Solve Problems</p>
-  <p>Grades 3–5 | 26 Thinking Challenges</p>
+ <div class="stars">⭐ 🧠 🎮 🧩 ⭐</div>
+ <h1>Ms. Leatherman's<br>Thinking Skills Arcade</h1>
+ <p>Think Deeply • Make Connections • Solve Problems</p>
+ <p>Grades 3–5 | Thinking Games & Discussion Protocols</p>
 </header>
 
 <main>
-
 <section class="welcome">
-  <h2>Welcome, Thinkers!</h2>
-  <p>
-    Choose a game, challenge your brain,
-    and discover new ways to think!
-  </p>
-  <p>
-    Every challenge is a chance to grow.
-    Are you ready?
-  </p>
+ <h2>Welcome, Thinkers!</h2>
+ <p>Choose a game or discussion protocol and challenge your brain!</p>
+ <p>Every challenge is a chance to grow.</p>
 </section>
 
-<button class="featured"
-  onclick="openGame('Depth & Complexity Challenge','Depth_Complexity_Game.html')">
-  <div class="emoji">🧠 🔍 ⭐</div>
-  <h2>Depth &amp; Complexity Challenge</h2>
-  <p>
-    Explore big ideas using the Depth and Complexity
-    thinking lenses. Investigate patterns, uncover
-    details, ask questions, and support your thinking
-    with evidence.
-  </p>
-  <span class="play">⭐ START THINKING →</span>
+<button class="featured" onclick="openGame(
+ 'Depth & Complexity Challenge',
+ 'Depth_Complexity_Game.html')">
+ <div class="emoji">🧠 🔍 ⭐</div>
+ <h2>Depth &amp; Complexity Challenge</h2>
+ <p>
+ Explore big ideas using Depth and Complexity thinking
+ lenses. Investigate patterns, uncover details, ask
+ questions, and support your thinking with evidence.
+ </p>
+ <span class="play-label">⭐ START THINKING →</span>
+</button>
+
+<button class="protocol-link" onclick="jumpToProtocols()">
+ 💬 Discussion Protocols — Explore Thinking Routines ↓
 </button>
 
 <h2 class="section-title">🎮 Choose Your Game</h2>
-
 <div class="games" id="gameGrid"></div>
 
+<section id="protocols">
+ <h2 class="section-title">💬 Discussion Protocols</h2>
+ <div class="protocol-intro">
+  <strong>Think • Discuss • Reflect</strong>
+  <p>
+   These thinking routines help you explore ideas,
+   listen to others, support your reasoning, and
+   reflect on what you have learned.
+  </p>
+  <p>
+   Choose a protocol below. Follow the steps,
+   record your thinking, and share your ideas
+   with a partner or group when directed.
+  </p>
+ </div>
+ <div class="games" id="protocolGrid"></div>
+</section>
 </main>
 
 <footer>
-  ⭐ Ms. Leatherman's Thinking Skills Arcade ⭐
-  <p>Think Creatively • Think Critically • Think Deeply</p>
+ ⭐ Ms. Leatherman's Thinking Skills Arcade ⭐
+ <p>Think Creatively • Think Critically • Think Deeply</p>
 </footer>
-
 </div>
 
-<!-- GAME PLAYER -->
+<!-- EXISTING GAME PLAYER -->
 
 <section id="player">
-  <div class="playerbar">
-    <button onclick="goHome()">← All 26 Games</button>
-    <span id="playerTitle">Thinking Skills Challenge</span>
+ <div class="playerbar">
+  <button onclick="goHome()">← All Games</button>
+  <span id="playerTitle">Thinking Skills Challenge</span>
+ </div>
+ <div id="loading">Loading your thinking challenge...</div>
+ <iframe id="gameFrame"
+  title="Interactive Thinking Skills Game"></iframe>
+</section>
+
+<!-- INTERACTIVE PROTOCOL PLAYER -->
+
+<section id="protocolPlayer">
+ <div class="playerbar">
+  <button onclick="goHome(true)">← Protocols</button>
+  <span id="protocolBarTitle">Discussion Protocol</span>
+ </div>
+ <div class="protocol-main">
+  <div class="protocol-hero">
+   <div class="protocol-topline">💬 Discussion Protocols</div>
+   <h1 id="protocolTitle"></h1>
+   <p id="protocolDescription"></p>
   </div>
 
-  <div id="loading">Loading your thinking challenge...</div>
+  <div class="panel">
+   <label for="studentName">Your name (optional)</label>
+   <input id="studentName" type="text"
+    placeholder="Enter your name">
 
-  <iframe
-    id="gameFrame"
-    title="Interactive Thinking Skills Game"
-    allow="fullscreen"
-  ></iframe>
+   <label for="topicInput">Our text, topic, image, or question</label>
+   <textarea id="topicInput"
+    placeholder="What are you investigating or discussing?"></textarea>
+  </div>
+
+  <div class="panel">
+   <h2>How to use this protocol</h2>
+   <ol class="steps" id="protocolSteps"></ol>
+  </div>
+
+  <div class="panel">
+   <div class="step-counter" id="stepCounter"></div>
+   <div class="progress"><div id="progressBar"></div></div>
+   <div class="question-box">
+    <h3 id="questionTitle"></h3>
+    <p id="questionPrompt"></p>
+   </div>
+   <div id="extraControls"></div>
+   <label for="responseInput">Record your thinking</label>
+   <textarea id="responseInput"
+    placeholder="Type your response, evidence, questions, or reflections..."></textarea>
+
+   <div class="protocol-buttons">
+    <button class="action secondary"
+     id="previousStep" onclick="moveStep(-1)">
+     ← Previous
+    </button>
+    <button class="action"
+     id="nextStep" onclick="moveStep(1)">
+     Next Step →
+    </button>
+    <button class="action secondary"
+     onclick="saveWork()">💾 Save Progress</button>
+    <button class="action secondary"
+     onclick="exportWork()">⬇ Export Responses</button>
+    <button class="action secondary"
+     onclick="restartProtocol()">↻ Start Over</button>
+   </div>
+   <div id="status" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="panel">
+   <h2>🗣️ Share and Reflect</h2>
+   <p>
+    When your teacher directs you, share your
+    thinking with a partner or group. Listen
+    carefully and consider different viewpoints.
+   </p>
+   <label for="finalReflection">
+    What did you learn, reconsider, or wonder?
+   </label>
+   <textarea id="finalReflection"
+    placeholder="My thinking changed because..."></textarea>
+   <button class="action" onclick="saveWork()">
+    Save Reflection
+   </button>
+  </div>
+ </div>
 </section>
 
 <script>
 "use strict";
 
-/*
-  Each entry:
-  [Name, Description, Emoji, Color, Game ID]
+/* THE ORIGINAL 25 GAMES */
 
-  Standalone games use a file name.
-  Library games use their original game mode.
-*/
-
-const games = [
-  [
-    "Connection Quest",
-    "Discover surprising connections between ideas.",
-    "🔗","teal","connection-quest.html"
-  ],
-  [
-    "HexaLinks",
-    "Connect concepts and build a web of relationships.",
-    "⬡","gold","hexalinks.html"
-  ],
-  [
-    "Six Bridges",
-    "Build a reasoning path between different ideas.",
-    "🌉","purple","bridge"
-  ],
-  [
-    "Web Weaver",
-    "Create a concept web and explain connections.",
-    "🕸️","teal","web"
-  ],
-  [
-    "Word Pair Flip",
-    "Flip cards to find matching ideas.",
-    "🃏","pink","memory"
-  ],
-  [
-    "Basket Brain",
-    "Choose the best vocabulary connection.",
-    "🏀","gold","quiz"
-  ],
-  [
-    "Rapid Recall",
-    "Race against the clock to answer questions.",
-    "⚡","blue","speed"
-  ],
-  [
-    "Word Tracker",
-    "Hunt for the vocabulary word that fits.",
-    "🔎","green","hunt"
-  ],
-  [
-    "Identity Detective",
-    "Use clues to identify a mystery concept.",
-    "🕵️","purple","who"
-  ],
-  [
-    "Symbol Decoder",
-    "Decode symbols and discover their meaning.",
-    "🔐","pink","emoji"
-  ],
-  [
-    "Human Check",
-    "Prove your reasoning by explaining connections.",
-    "🤖","teal","bot"
-  ],
-  [
-    "Mystery Word",
-    "Find the word that doesn't belong.",
-    "❓","gold","imposter"
-  ],
-  [
-    "Sequence Sprint",
-    "Put events in the correct order.",
-    "🔢","blue","order"
-  ],
-  [
-    "Chain Reaction",
-    "Build a cause-and-effect sequence.",
-    "⛓️","green","chain"
-  ],
-  [
-    "Fact Sort Studio",
-    "Sort facts and ideas into categories.",
-    "🗂️","purple","sort"
-  ],
-  [
-    "Choice Drop",
-    "Predict where an idea belongs.",
-    "🎯","pink","plinko"
-  ],
-  [
-    "Cause Kitchen",
-    "Discover which causes produce an effect.",
-    "👩‍🍳","teal","recipe"
-  ],
-  [
-    "Systems Lab",
-    "Investigate inputs, outputs, and systems.",
-    "⚙️","gold","machine"
-  ],
-  [
-    "Three Tags",
-    "Capture important ideas using three hashtags.",
-    "#️⃣","blue","hashtags"
-  ],
-  [
-    "Minute Message",
-    "Summarize important information in one minute.",
-    "⏱️","green","summary"
-  ],
-  [
-    "Tiny Takeaway",
-    "Explain a big idea in 280 characters or fewer.",
-    "💬","purple","tweet"
-  ],
-  [
-    "Card Connections",
-    "Draw two ideas and explain their relationship.",
-    "🃏","pink","cards"
-  ],
-  [
-    "Poetry Puzzle",
-    "Create a haiku using your topic vocabulary.",
-    "✍️","teal","haiku"
-  ],
-  [
-    "Story Portal",
-    "Write a creative scene with a surprising twist.",
-    "🌀","gold","wormhole"
-  ],
-  [
-    "Deep-Sea Debate",
-    "Make a claim, support it with evidence, and consider another viewpoint.",
-    "🌊","blue","claims"
-  ]
+const games=[
+["Connection Quest","Discover surprising connections between ideas.","🔗","teal","connection-quest.html"],
+["HexaLinks","Connect concepts and build a web of relationships.","⬡","gold","hexalinks.html"],
+["Six Bridges","Build a reasoning path between different ideas.","🌉","purple","bridge"],
+["Web Weaver","Create a concept web and explain connections.","🕸️","teal","web"],
+["Word Pair Flip","Flip cards to find matching ideas.","🃏","pink","memory"],
+["Basket Brain","Choose the best vocabulary connection.","🏀","gold","quiz"],
+["Rapid Recall","Race against the clock to answer questions.","⚡","blue","speed"],
+["Word Tracker","Hunt for the vocabulary word that fits.","🔎","green","hunt"],
+["Identity Detective","Use clues to identify a mystery concept.","🕵️","purple","who"],
+["Symbol Decoder","Decode symbols and discover their meaning.","🔐","pink","emoji"],
+["Human Check","Prove your reasoning by explaining connections.","🤖","teal","bot"],
+["Mystery Word","Find the word that doesn't belong.","❓","gold","imposter"],
+["Sequence Sprint","Put events in the correct order.","🔢","blue","order"],
+["Chain Reaction","Build a cause-and-effect sequence.","⛓️","green","chain"],
+["Fact Sort Studio","Sort facts and ideas into categories.","🗂️","purple","sort"],
+["Choice Drop","Predict where an idea belongs.","🎯","pink","plinko"],
+["Cause Kitchen","Discover which causes produce an effect.","👩‍🍳","teal","recipe"],
+["Systems Lab","Investigate inputs, outputs, and systems.","⚙️","gold","machine"],
+["Three Tags","Capture important ideas using three hashtags.","#️⃣","blue","hashtags"],
+["Minute Message","Summarize important information in one minute.","⏱️","green","summary"],
+["Tiny Takeaway","Explain a big idea in 280 characters or fewer.","💬","purple","tweet"],
+["Card Connections","Draw two ideas and explain their relationship.","🃏","pink","cards"],
+["Poetry Puzzle","Create a haiku using your topic vocabulary.","✍️","teal","haiku"],
+["Story Portal","Write a creative scene with a surprising twist.","🌀","gold","wormhole"],
+["Deep-Sea Debate","Make a claim, support it with evidence, and consider another viewpoint.","🌊","blue","claims"]
 ];
 
-/* BUILD ALL GAME CARDS */
+/*
+ DISCUSSION PROTOCOLS
+ Based on the uploaded classroom resources.
+ Only slides 8, 17, 18 and 21 are included
+ from the Protocol Slides document.
+*/
 
-const grid=document.getElementById("gameGrid");
+const protocols=[
 
-games.forEach(game=>{
-  const [name,description,emoji,color,id]=game;
+{
+ id:"optic",
+ name:"OPTIC",
+ emoji:"👁️",
+ color:"teal",
+ description:"Analyze a picture, diagram, chart, or visual text using five thinking steps.",
+ steps:[
+ "Choose a visual to study carefully.",
+ "O: Look at the overall picture.",
+ "P: Examine its parts.",
+ "T: Consider the title.",
+ "I: Explore how the parts connect.",
+ "C: Draw a conclusion."
+ ],
+ questions:[
+ ["O — Overview","What do you see? What is the big picture?"],
+ ["P — Parts","What are the different parts of the picture? What might the details mean?"],
+ ["T — Title","What does the title tell you? How does it connect to the picture? What other title might fit?"],
+ ["I — Interrelationships","How is everything connected to the big picture?"],
+ ["C — Conclusion","What conclusion can you make? Summarize the message in one or two sentences."]
+ ]
+},
 
-  const button=document.createElement("button");
-  button.className="game "+color;
-  button.type="button";
+{
+ id:"qtip",
+ name:"Q-TIP",
+ emoji:"❓",
+ color:"purple",
+ description:"Explore questions, troubles, intriguing ideas, and your strengths.",
+ steps:[
+ "Read, observe, or investigate the topic.",
+ "Consider your questions.",
+ "Identify what troubles or concerns you.",
+ "Explore what intrigues you.",
+ "Reflect on what propels you forward."
+ ],
+ questions:[
+ ["Q — Questions","What questions do you have about the content?"],
+ ["T — Troubles","What troubles you? What concerns do you have?"],
+ ["I — Intrigues","What intrigues you? What interests or additional questions do you have?"],
+ ["P — Propels","What strengths do you have in this content area?"]
+ ]
+},
 
-  const picture=document.createElement("div");
-  picture.className="emoji";
-  picture.textContent=emoji;
+{
+ id:"hats",
+ name:"Six Thinking Hats",
+ emoji:"🎩",
+ color:"gold",
+ description:"Consider a topic through six different thinking perspectives.",
+ steps:[
+ "Choose or receive an assigned thinking hat.",
+ "Use that hat's perspective to examine the topic.",
+ "Record your thinking and prepare to share.",
+ "Listen as others contribute different perspectives.",
+ "Reflect on how the different hats help you understand the topic."
+ ],
+ questions:[
+ ["⚪ White Hat — Facts","What facts and information do we know? What information is missing?"],
+ ["🔴 Red Hat — Feelings","How do you feel about this? How might others feel?"],
+ ["⚫ Black Hat — Cautions","What might go wrong? What problems or risks should we consider?"],
+ ["🟡 Yellow Hat — Benefits","What is positive about this idea? How could it help?"],
+ ["🟢 Green Hat — Creativity","What new ideas or alternative solutions could we imagine?"],
+ ["🔵 Blue Hat — Process","What is our goal? What have we learned, and what should we do next?"]
+ ]
+},
 
-  const heading=document.createElement("h3");
-  heading.textContent=name;
+{
+ id:"circle",
+ name:"Inner–Outer Circle",
+ emoji:"🔄",
+ color:"blue",
+ description:"Share your thinking, practice listening, and reflect on a partner's ideas.",
+ steps:[
+ "Form two circles, one inside the other.",
+ "Face a partner in the opposite circle.",
+ "Share your thinking while your partner listens.",
+ "Switch roles so both partners contribute.",
+ "Rotate to a new partner when directed.",
+ "Reflect on the discussion."
+ ],
+ questions:[
+ ["My First Thinking","What do I think about the topic before discussing it?"],
+ ["Listening to My Partner","What did my partner say that I hadn't realized on my own?"],
+ ["What I Wanted to Add","What did I want to jump in and say?"],
+ ["A Good Listener","What did I notice about someone who was a good listener?"],
+ ["My Concluding Thoughts","What are my concluding thoughts about the text or topic?"]
+ ]
+},
 
-  const descriptionText=document.createElement("p");
-  descriptionText.textContent=description;
+{
+ id:"fruit",
+ name:"Peel the Fruit",
+ emoji:"🍊",
+ color:"green",
+ description:"Move from surface observations to deeper explanations and central meaning.",
+ steps:[
+ "Begin with what you notice on the outside.",
+ "Explore questions beneath the surface.",
+ "Build an explanation.",
+ "Make meaningful connections.",
+ "Consider different viewpoints.",
+ "Capture the heart of the idea."
+ ],
+ questions:[
+ ["1 — Outside Skin","What do you see, observe, or notice?"],
+ ["2 — Under the Skin","What questions or puzzles do you have?"],
+ ["3 — Building Explanations","What is this really about?"],
+ ["4 — Making a Connection","How does this story or topic connect to your life, another text, or the world?"],
+ ["5 — Different Viewpoints","How could we see this from another perspective?"],
+ ["6 — Capturing the Heart","What is the central idea or message?"]
+ ]
+},
 
-  const play=document.createElement("span");
-  play.className="play";
-  play.textContent="▶ Play Game";
+{
+ id:"chairs",
+ name:"Philosophical Chairs",
+ emoji:"🪑",
+ color:"pink",
+ description:"Take a position, support it, listen respectfully, and reconsider your thinking.",
+ steps:[
+ "Read the statement or question.",
+ "Choose whether you agree or disagree.",
+ "Explain your reasoning before discussion.",
+ "Discuss and listen to other viewpoints.",
+ "Choose your position again after discussion.",
+ "Explain whether your thinking changed."
+ ],
+ questions:[
+ ["Before — My Position","Do you AGREE or DISAGREE with the statement? Explain your thinking and evidence."],
+ ["During — Listening","What reasons or evidence did others share?"],
+ ["After — My Position","Do you AGREE or DISAGREE now? Explain your thinking."],
+ ["Reflection","Did your opinion change? What evidence influenced you?"]
+ ]
+},
 
-  button.append(picture,heading,descriptionText,play);
+{
+ id:"consensus",
+ name:"Consensus Mats",
+ emoji:"🤝",
+ color:"teal",
+ description:"Think independently, share everyone's ideas, and develop a group response.",
+ steps:[
+ "Read the question or idea.",
+ "Each person writes in their own section of the mat.",
+ "Go around the group and share every response.",
+ "Discuss similarities, differences, and evidence.",
+ "Create a shared answer for the center rectangle.",
+ "Share and debrief."
+ ],
+ questions:[
+ ["My Individual Response","What is my own answer or thinking?"],
+ ["Everyone's Ideas","What did each group member contribute?"],
+ ["Compare Responses","What ideas do we agree or disagree about?"],
+ ["Our Center Response","What answer should our group place in the center?"],
+ ["Debrief","How did working toward consensus affect our thinking?"]
+ ]
+},
 
-  button.addEventListener("click",()=>{
-    openGame(name,id);
-  });
+{
+ id:"mathchalk",
+ name:"21st Century Chalk Talk",
+ emoji:"🧮",
+ color:"blue",
+ description:"Solve a math word problem through four rounds of precise thinking.",
+ steps:[
+ "Round 1 — 3 minutes: Read, underline important words, and brainstorm three math words.",
+ "Round 2 — 3 minutes: Explain why those words are important.",
+ "Round 3 — 3–4 minutes: Solve the problem and show labeled work.",
+ "Round 4 — 3–4 minutes: Explain the work and interpret the answer."
+ ],
+ questions:[
+ ["Round 1 — Identify","Which words are necessary for solving the problem? What are your top three math words?"],
+ ["Round 2 — Explain","Why are the selected words important? What do they tell you?"],
+ ["Round 3 — Solve","Show your calculations, steps, and labels."],
+ ["Round 4 — Interpret","Explain how you solved the problem and what your answer means."]
+ ]
+},
 
-  grid.appendChild(button);
+{
+ id:"testchalk",
+ name:"Test Genre Chalk Talk",
+ emoji:"📝",
+ color:"gold",
+ description:"Discuss strategies for approaching assessment questions without answering them.",
+ steps:[
+ "Look at the practice reading or assessment questions.",
+ "Identify strategies that could help.",
+ "Consider what you should think aloud.",
+ "Discuss how to approach the assessment.",
+ "Reflect on how to give your best effort.",
+ "Do not answer the practice questions during this protocol."
+ ],
+ questions:[
+ ["Helpful Strategies","What strategies would help with this kind of question?"],
+ ["Think Aloud","What should we be thinking aloud as we work?"],
+ ["Approach","How should we approach or attack this assessment?"],
+ ["Best Effort","How can we make sure we're giving our best effort?"],
+ ["Strategy Reflection","Which strategy would you choose first, and why?"]
+ ]
+},
+
+{
+ id:"render",
+ name:"Text Rendering Protocol",
+ emoji:"📖",
+ color:"purple",
+ description:"Share a meaningful sentence, phrase, and word from a text.",
+ steps:[
+ "Read the text carefully.",
+ "Round 1: Each person shares a significant sentence.",
+ "Round 2: Each person shares a significant phrase. The scribe records phrases.",
+ "Round 3: Each person shares a significant word. The scribe records words.",
+ "Discuss what you heard and any new thinking.",
+ "Debrief the process."
+ ],
+ questions:[
+ ["Round 1 — Sentence","What sentence is particularly significant or important in proving your thinking? Why?"],
+ ["Round 2 — Phrase","What phrase is especially meaningful? Why did you choose it?"],
+ ["Round 3 — Word","What single word matters most? Explain its significance."],
+ ["Discussion","What did you hear from others? What new thoughts do you have?"],
+ ["Debrief","How did narrowing from a sentence to a phrase to a word deepen your understanding?"]
+ ]
+}
+
+];
+
+/* CREATE ARCADE CARDS */
+
+function makeCard(name,description,emoji,color,callback,extraClass=""){
+ const button=document.createElement("button");
+ button.type="button";
+ button.className="game "+color+" "+extraClass;
+
+ const picture=document.createElement("div");
+ picture.className="emoji";
+ picture.textContent=emoji;
+
+ const heading=document.createElement("h3");
+ heading.textContent=name;
+
+ const details=document.createElement("p");
+ details.textContent=description;
+
+ const play=document.createElement("span");
+ play.className="play";
+ play.textContent="▶ Start Activity";
+
+ button.append(picture,heading,details,play);
+ button.addEventListener("click",callback);
+ return button;
+}
+
+const gameGrid=document.getElementById("gameGrid");
+games.forEach(g=>{
+ gameGrid.appendChild(makeCard(
+  g[0],g[1],g[2],g[3],
+  ()=>openGame(g[0],g[4])
+ ));
 });
 
-/* OPEN THE CHOSEN GAME */
+const protocolGrid=document.getElementById("protocolGrid");
+protocols.forEach(p=>{
+ protocolGrid.appendChild(makeCard(
+  p.name,p.description,p.emoji,p.color,
+  ()=>openProtocol(p.id),"protocol-card"
+ ));
+});
+
+/* NAVIGATION */
 
 const arcade=document.getElementById("arcade");
 const player=document.getElementById("player");
 const frame=document.getElementById("gameFrame");
-const loading=document.getElementById("loading");
-const playerTitle=document.getElementById("playerTitle");
-
-let currentGame=null;
+const protocolPlayer=document.getElementById("protocolPlayer");
 let loadNumber=0;
 
+function jumpToProtocols(){
+ document.getElementById("protocols")
+  .scrollIntoView({behavior:"smooth",block:"start"});
+}
+
 function openGame(name,id){
-  currentGame={name,id};
-  const thisLoad=++loadNumber;
+ saveCurrentStep();
 
-  arcade.style.display="none";
-  player.style.display="block";
+ const thisLoad=++loadNumber;
+ arcade.style.display="none";
+ protocolPlayer.style.display="none";
+ player.style.display="block";
 
-  playerTitle.textContent=name;
-  loading.style.display="block";
+ document.getElementById("playerTitle").textContent=name;
+ document.getElementById("loading").style.display="block";
 
-  window.scrollTo(0,0);
+ const standalone=id.endsWith(".html");
 
-  /*
-    Standalone games load their own files.
+ frame.onload=function(){
+  if(thisLoad!==loadNumber)return;
 
-    The original 23 games all use game-library.html.
-    Once the library finishes loading, this page
-    selects the requested game automatically.
-  */
-
-  const isStandalone=id.endsWith(".html");
-
-  frame.onload=function(){
-    if(thisLoad!==loadNumber)return;
-
-    if(!isStandalone){
-      try{
-        const libraryWindow=frame.contentWindow;
-
-        if(
-          libraryWindow &&
-          typeof libraryWindow.start==="function"
-        ){
-          libraryWindow.start(id);
-        }else{
-          console.warn(
-            "Game library loaded but direct game selection was unavailable."
-          );
-        }
-      }catch(error){
-        console.error("Could not select library game:",error);
-      }
+  if(!standalone){
+   try{
+    const w=frame.contentWindow;
+    if(w && typeof w.start==="function"){
+     w.start(id);
     }
-
-    loading.style.display="none";
-  };
-
-  frame.src=isStandalone
-    ? id
-    : "game-library.html";
-}
-
-/* RETURN TO THE ARCADE */
-
-function goHome(){
-  ++loadNumber;
-  currentGame=null;
-
-  frame.onload=null;
-  frame.src="about:blank";
-
-  player.style.display="none";
-  arcade.style.display="block";
-
-  window.scrollTo(0,0);
-}
-
-/* OPTIONAL BROWSER BACK BUTTON SUPPORT */
-
-window.addEventListener("keydown",event=>{
-  if(event.key==="Escape" && currentGame){
-    /*
-      Escape returns to the arcade only when
-      the main page has keyboard focus.
-    */
-    goHome();
+   }catch(e){
+    console.warn("Game selection unavailable:",e);
+   }
   }
-});
+
+  document.getElementById("loading").style.display="none";
+ };
+
+ frame.src=standalone?id:"game-library.html";
+ window.scrollTo(0,0);
+}
+
+function goHome(showProtocols=false){
+ saveCurrentStep();
+ ++loadNumber;
+ frame.onload=null;
+ frame.src="about:blank";
+
+ player.style.display="none";
+ protocolPlayer.style.display="none";
+ arcade.style.display="block";
+
+ if(showProtocols){
+  setTimeout(()=>{
+   document.getElementById("protocols")
+    .scrollIntoView({block:"start"});
+  },0);
+ }else{
+  window.scrollTo(0,0);
+ }
+}
+
+/* PROTOCOL ACTIVITY SYSTEM */
+
+let activeProtocol=null;
+let activeStep=0;
+let responses=[];
+let hatChoice=-1;
+
+function storageKey(){
+ return "leatherman-protocol-"+activeProtocol.id;
+}
+
+function readSaved(){
+ try{
+  return JSON.parse(localStorage.getItem(storageKey())||"null");
+ }catch(e){
+  return null;
+ }
+}
+
+function openProtocol(id){
+ const p=protocols.find(x=>x.id===id);
+ if(!p)return;
+
+ activeProtocol=p;
+ activeStep=0;
+ hatChoice=-1;
+ responses=Array(p.questions.length).fill("");
+
+ const saved=readSaved();
+ if(saved && Array.isArray(saved.responses)){
+  responses=p.questions.map((q,i)=>saved.responses[i]||"");
+ }
+
+ arcade.style.display="none";
+ player.style.display="none";
+ protocolPlayer.style.display="block";
+
+ document.getElementById("protocolBarTitle").textContent=p.name;
+ document.getElementById("protocolTitle").textContent=p.emoji+" "+p.name;
+ document.getElementById("protocolDescription").textContent=p.description;
+
+ const steps=document.getElementById("protocolSteps");
+ steps.replaceChildren();
+
+ p.steps.forEach(s=>{
+  const li=document.createElement("li");
+  li.textContent=s;
+  steps.appendChild(li);
+ });
+
+ document.getElementById("studentName").value=saved?.name||"";
+ document.getElementById("topicInput").value=saved?.topic||"";
+ document.getElementById("finalReflection").value=saved?.reflection||"";
+
+ if(p.id==="hats" && Number.isInteger(saved?.hatChoice)){
+  hatChoice=saved.hatChoice;
+  activeStep=Math.max(0,Math.min(hatChoice,p.questions.length-1));
+ }else if(Number.isInteger(saved?.step)){
+  activeStep=Math.max(0,Math.min(saved.step,p.questions.length-1));
+ }
+
+ showStep();
+ window.scrollTo(0,0);
+}
+
+function showStep(){
+ if(!activeProtocol)return;
+
+ const p=activeProtocol;
+ const q=p.questions[activeStep];
+
+ document.getElementById("stepCounter").textContent=
+  "Thinking Step "+(activeStep+1)+" of "+p.questions.length;
+
+ document.getElementById("progressBar").style.width=
+  ((activeStep+1)/p.questions.length*100)+"%";
+
+ document.getElementById("questionTitle").textContent=q[0];
+ document.getElementById("questionPrompt").textContent=q[1];
+ document.getElementById("responseInput").value=responses[activeStep]||"";
+
+ document.getElementById("previousStep").disabled=activeStep===0;
+
+ document.getElementById("nextStep").textContent=
+  activeStep===p.questions.length-1
+  ?"Finish & Reflect →"
+  :"Next Step →";
+
+ const extras=document.getElementById("extraControls");
+ extras.replaceChildren();
+
+ if(p.id==="hats"){
+  const heading=document.createElement("p");
+  heading.textContent="Choose a hat to explore its thinking perspective:";
+  extras.appendChild(heading);
+
+  const colors=["White","Red","Black","Yellow","Green","Blue"];
+  const symbols=["⚪","🔴","⚫","🟡","🟢","🔵"];
+  const grid=document.createElement("div");
+  grid.className="hat-grid";
+
+  colors.forEach((color,i)=>{
+   const b=document.createElement("button");
+   b.className="hat"+(activeStep===i?" active":"");
+   b.textContent=symbols[i]+" "+color+" Hat";
+   b.onclick=()=>{
+    saveCurrentStep();
+    activeStep=i;
+    hatChoice=i;
+    showStep();
+   };
+   grid.appendChild(b);
+  });
+
+  extras.appendChild(grid);
+ }
+
+ document.getElementById("status").textContent=
+  "Your responses can be saved on this Chromebook or exported.";
+}
+
+function saveCurrentStep(){
+ if(!activeProtocol)return;
+ const input=document.getElementById("responseInput");
+ if(input && protocolPlayer.style.display==="block"){
+  responses[activeStep]=input.value;
+ }
+}
+
+function moveStep(direction){
+ if(!activeProtocol)return;
+ saveCurrentStep();
+
+ const next=activeStep+direction;
+
+ if(next>=activeProtocol.questions.length){
+  saveWork();
+  document.getElementById("finalReflection")
+   .scrollIntoView({behavior:"smooth",block:"center"});
+  return;
+ }
+
+ activeStep=Math.max(0,next);
+ showStep();
+}
+
+function collectWork(){
+ saveCurrentStep();
+ return {
+  name:document.getElementById("studentName").value,
+  topic:document.getElementById("topicInput").value,
+  reflection:document.getElementById("finalReflection").value,
+  responses:[...responses],
+  step:activeStep,
+  hatChoice:hatChoice
+ };
+}
+
+function saveWork(){
+ if(!activeProtocol)return;
+
+ try{
+  localStorage.setItem(
+   storageKey(),
+   JSON.stringify(collectWork())
+  );
+
+  document.getElementById("status").textContent=
+   "✓ Progress saved in this browser.";
+ }catch(e){
+  document.getElementById("status").textContent=
+   "Browser storage is unavailable. Use Export Responses instead.";
+ }
+}
+
+function exportWork(){
+ if(!activeProtocol)return;
+
+ const work=collectWork();
+ const p=activeProtocol;
+
+ let output=
+  "MS. LEATHERMAN'S THINKING SKILLS ARCADE\n"+
+  "DISCUSSION PROTOCOL: "+p.name+"\n\n"+
+  "Name: "+work.name+"\n"+
+  "Topic: "+work.topic+"\n\n";
+
+ p.questions.forEach((q,i)=>{
+  output+=
+   (i+1)+". "+q[0]+"\n"+
+   q[1]+"\n"+
+   "Response: "+(work.responses[i]||"(not completed)")+
+   "\n\n";
+ });
+
+ output+="FINAL REFLECTION\n"+work.reflection+"\n";
+
+ const blob=new Blob([output],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+
+ a.href=url;
+ a.download="thinking-protocol-"+p.id+".txt";
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+
+ document.getElementById("status").textContent=
+  "Responses exported as a text file.";
+}
+
+function restartProtocol(){
+ if(!activeProtocol)return;
+
+ if(!confirm("Start this protocol over and clear your saved responses?")){
+  return;
+ }
+
+ localStorage.removeItem(storageKey());
+ responses=Array(activeProtocol.questions.length).fill("");
+ activeStep=0;
+ hatChoice=-1;
+
+ document.getElementById("studentName").value="";
+ document.getElementById("topicInput").value="";
+ document.getElementById("finalReflection").value="";
+
+ showStep();
+ document.getElementById("status").textContent=
+  "Started a fresh activity.";
+}
 
 </script>
-
 </body>
 </html>
