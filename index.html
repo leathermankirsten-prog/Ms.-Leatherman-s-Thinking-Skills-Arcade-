@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -865,7 +864,7 @@ function openGame(name,id) {
     }
   };
 
-  frame.src = standalone ? id : "game-library.html";
+  frame.src = standalone ? id : "game-library.html?game=" + encodeURIComponent(id) + "&v=20261110b";
   window.scrollTo(0,0);
 }
 
