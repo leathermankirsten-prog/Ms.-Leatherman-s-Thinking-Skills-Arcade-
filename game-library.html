@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -1623,6 +1622,12 @@ catch(e){
 
 topicList();
 library();
+
+// Open a requested activity directly, including inside Google Sites embeds.
+const requestedGame=new URLSearchParams(location.search).get('game');
+if(requestedGame && GAMES.some(g=>g[2]===requestedGame)){
+  start(requestedGame);
+}
 
 $('topic').onchange=e=>{
   topicName=e.target.value;
