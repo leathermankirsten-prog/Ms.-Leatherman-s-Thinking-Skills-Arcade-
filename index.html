@@ -420,10 +420,10 @@ footer {
 <div id="arcade">
 
 <header>
-<div class="stars">â­ âœ¨  ðŸŽ® ðŸ§© â­</div>
+<div class="stars">⭐ ✨  🎮 🧩 ⭐</div>
 <h1>Ms. Leatherman's<br>Thinking Skills Arcade</h1>
-<p>Think Deeply â€¢ Make Connections â€¢ Solve Problems</p>
-<p>Grades 3â€“5 | Thinking Games & Discussion Protocols</p>
+<p>Think Deeply • Make Connections • Solve Problems</p>
+<p>Grades 3–5 | Thinking Games & Discussion Protocols</p>
 </header>
 
 <main>
@@ -435,30 +435,30 @@ footer {
 
 <button class="featured"
 onclick="openGame('Depth & Complexity Challenge','Depth_Complexity_Game.html')">
-<div class="emoji">âœ¨  ðŸ” â­</div>
+<div class="emoji">✨  🔍 ⭐</div>
 <h2>Depth & Complexity Challenge</h2>
 <p>Explore big ideas using Depth and Complexity thinking lenses. Investigate patterns, uncover details, ask questions, and support your thinking with evidence.</p>
-<span class="play-label">â­ START THINKING â†’</span>
+<span class="play-label">⭐ START THINKING →</span>
 </button>
 
 
 
 <button class="protocol-link"
 onclick="document.getElementById('protocols').scrollIntoView({behavior:'smooth'})">
-ðŸ’¬ Discussion Protocols â€” Explore Thinking Routines â†“
+💬 Discussion Protocols — Explore Thinking Routines ↓
 </button>
 
 
 
-<h2 class="section-title">ðŸŽ® Choose Your Game</h2>
+<h2 class="section-title">🎮 Choose Your Game</h2>
 <div class="games" id="gameGrid"></div>
 
 
 
 <section id="protocols">
-<h2 class="section-title">ðŸ’¬ Discussion Protocols</h2>
+<h2 class="section-title">💬 Discussion Protocols</h2>
 <div class="protocol-intro">
-<strong>Think â€¢ Discuss â€¢ Reflect</strong>
+<strong>Think • Discuss • Reflect</strong>
 <p>Choose a thinking routine. Follow the instructions, collect your ideas, and save or export your responses.</p>
 </div>
 <div class="games" id="protocolGrid"></div>
@@ -466,11 +466,11 @@ onclick="document.getElementById('protocols').scrollIntoView({behavior:'smooth'}
 
 <section id="elaReview" aria-labelledby="elaTitle">
   <h2 class="section-title" id="elaTitle">
-    ðŸ“š ELA Fall Interim Review
+    📚 ELA Fall Interim Review
   </h2>
 
   <div class="protocol-intro">
-    <strong>Read â€¢ Question â€¢ Prove â€¢ Infer â€¢ Write</strong>
+    <strong>Read • Question • Prove • Infer • Write</strong>
     <p>
       Practice text-based questions, strong evidence,
       explicit details, inferences, and creative
@@ -483,12 +483,12 @@ onclick="document.getElementById('protocols').scrollIntoView({behavior:'smooth'}
 
 </main>
 
-<footer>â­ Ms. Leatherman's Thinking Skills Arcade â­</footer>
+<footer>⭐ Ms. Leatherman's Thinking Skills Arcade ⭐</footer>
 </div>
 
 <section id="player">
 <div class="playerbar">
-<button onclick="goHome()">â† All Games</button>
+<button onclick="goHome()">← All Games</button>
 <strong id="playerTitle"></strong>
 </div>
 <iframe id="gameFrame" title="Thinking Skills Game"></iframe>
@@ -497,14 +497,14 @@ onclick="document.getElementById('protocols').scrollIntoView({behavior:'smooth'}
 <section id="protocolPlayer">
 
 <div class="playerbar">
-<button onclick="goHome(true)">â† Protocols</button>
+<button onclick="goHome(true)">← Protocols</button>
 <strong id="protocolBarTitle"></strong>
 </div>
 
 <div class="protocol-main">
 
 <div class="protocol-hero">
-<div class="protocol-topline">ðŸ’¬ Discussion Protocols</div>
+<div class="protocol-topline">💬 Discussion Protocols</div>
 <h1 id="protocolTitle"></h1>
 <p id="protocolDescription"></p>
 </div>
@@ -535,9 +535,9 @@ The worksheet background could not load.
 </p>
 
 <div class="protocol-buttons">
-<button class="action" onclick="saveWork()">ðŸ’¾ Save Notes</button>
-<button class="action secondary" onclick="exportWork()">â¬‡ Export Notes</button>
-<button class="action secondary" onclick="restartProtocol()">â†» Clear Organizer</button>
+<button class="action" onclick="saveWork()">💾 Save Notes</button>
+<button class="action secondary" onclick="exportWork()">⬇ Export Notes</button>
+<button class="action secondary" onclick="restartProtocol()">↻ Clear Organizer</button>
 </div>
 
 <p id="organizerStatus" role="status"></p>
@@ -568,26 +568,26 @@ The worksheet background could not load.
 
 <div class="protocol-buttons">
 <button class="action secondary" id="previousStep"
-onclick="moveStep(-1)">â† Previous</button>
+onclick="moveStep(-1)">← Previous</button>
 
 <button class="action" id="nextStep"
-onclick="moveStep(1)">Next Step â†’</button>
+onclick="moveStep(1)">Next Step →</button>
 
 <button class="action secondary"
-onclick="saveWork()">ðŸ’¾ Save Progress</button>
+onclick="saveWork()">💾 Save Progress</button>
 
 <button class="action secondary"
-onclick="exportWork()">â¬‡ Export Responses</button>
+onclick="exportWork()">⬇ Export Responses</button>
 
 <button class="action secondary"
-onclick="restartProtocol()">â†» Start Over</button>
+onclick="restartProtocol()">↻ Start Over</button>
 </div>
 
 <p id="status" role="status"></p>
 </div>
 
 <div class="panel">
-<h2>ðŸ—£ï¸ Share and Reflect</h2>
+<h2>🗣️ Share and Reflect</h2>
 <label for="finalReflection">
 What did you learn, reconsider, or wonder?
 </label>
@@ -606,54 +606,54 @@ const BASE =
 "https://leathermankirsten-prog.github.io/Ms.-Leatherman-s-Thinking-Skills-Arcade-/";
 
 const games = [
-["Connection Quest","Discover connections between ideas.","ðŸ”—","teal","connection-quest.html"],
-["HexaLinks","Connect concepts and explain relationships.","â¬¡","gold","hexalinks.html"],
-["Six Bridges","Build a reasoning path.","ðŸŒ‰","purple","bridge"],
-["Web Weaver","Create a concept web.","ðŸ•¸ï¸","teal","web"],
-["Word Pair Flip","Match related ideas.","ðŸƒ","pink","memory"],
-["Basket Brain","Choose vocabulary connections.","ðŸ€","gold","quiz"],
-["Rapid Recall","Race against the clock.","âš¡","blue","speed"],
-["Word Tracker","Hunt for vocabulary.","ðŸ”Ž","green","hunt"],
-["Identity Detective","Identify a mystery concept.","ðŸ•µï¸","purple","who"],
-["Symbol Decoder","Decode symbols.","ðŸ”","pink","emoji"],
-["Human Check","Explain your reasoning.","ðŸ¤–","teal","bot"],
-["Mystery Word","Find what doesn't belong.","â“","gold","imposter"],
-["Sequence Sprint","Order events correctly.","ðŸ”¢","blue","order"],
-["Chain Reaction","Build cause-and-effect chains.","â›“ï¸","green","chain"],
-["Fact Sort Studio","Sort ideas into categories.","ðŸ—‚ï¸","purple","sort"],
-["Choice Drop","Predict where ideas belong.","ðŸŽ¯","pink","plinko"],
-["Cause Kitchen","Explore causes and effects.","ðŸ‘©â€ðŸ³","teal","recipe"],
-["Systems Lab","Investigate systems.","âš™ï¸","gold","machine"],
-["Three Tags","Summarize using three hashtags.","#ï¸âƒ£","blue","hashtags"],
-["Minute Message","Summarize in one minute.","â±ï¸","green","summary"],
-["Tiny Takeaway","Explain an idea in 280 characters.","ðŸ’¬","purple","tweet"],
-["Card Connections","Connect two ideas.","ðŸƒ","pink","cards"],
-["Poetry Puzzle","Write a vocabulary haiku.","âœï¸","teal","haiku"],
-["Story Portal","Write a creative scene.","ðŸŒ€","gold","wormhole"],
-["Deep-Sea Debate","Make a claim with evidence.","ðŸŒŠ","blue","claims"],
-["Morphology & Encoding Lab","Explore word parts, meanings, and spelling patterns. Choose morphology, encoding, or both.","ðŸ”¤","green","morphology"]
+["Connection Quest","Discover connections between ideas.","🔗","teal","connection-quest.html"],
+["HexaLinks","Connect concepts and explain relationships.","⬡","gold","hexalinks.html"],
+["Six Bridges","Build a reasoning path.","🌉","purple","bridge"],
+["Web Weaver","Create a concept web.","🕸️","teal","web"],
+["Word Pair Flip","Match related ideas.","🃏","pink","memory"],
+["Basket Brain","Choose vocabulary connections.","🏀","gold","quiz"],
+["Rapid Recall","Race against the clock.","⚡","blue","speed"],
+["Word Tracker","Hunt for vocabulary.","🔎","green","hunt"],
+["Identity Detective","Identify a mystery concept.","🕵️","purple","who"],
+["Symbol Decoder","Decode symbols.","🔐","pink","emoji"],
+["Human Check","Explain your reasoning.","🤖","teal","bot"],
+["Mystery Word","Find what doesn't belong.","❓","gold","imposter"],
+["Sequence Sprint","Order events correctly.","🔢","blue","order"],
+["Chain Reaction","Build cause-and-effect chains.","⛓️","green","chain"],
+["Fact Sort Studio","Sort ideas into categories.","🗂️","purple","sort"],
+["Choice Drop","Predict where ideas belong.","🎯","pink","plinko"],
+["Cause Kitchen","Explore causes and effects.","👩‍🍳","teal","recipe"],
+["Systems Lab","Investigate systems.","⚙️","gold","machine"],
+["Three Tags","Summarize using three hashtags.","#️⃣","blue","hashtags"],
+["Minute Message","Summarize in one minute.","⏱️","green","summary"],
+["Tiny Takeaway","Explain an idea in 280 characters.","💬","purple","tweet"],
+["Card Connections","Connect two ideas.","🃏","pink","cards"],
+["Poetry Puzzle","Write a vocabulary haiku.","✍️","teal","haiku"],
+["Story Portal","Write a creative scene.","🌀","gold","wormhole"],
+["Deep-Sea Debate","Make a claim with evidence.","🌊","blue","claims"],
+["Morphology & Encoding Lab","Explore word parts, meanings, and spelling patterns. Choose morphology, encoding, or both.","🔤","green","morphology"]
 ];
 
 const protocols = [
 {
 id:"optic",
 name:"OPTIC",
-emoji:"ðŸ‘ï¸",
+emoji:"👁️",
 color:"teal",
 description:"Analyze a visual using the original OPTIC organizer.",
 steps:[],
 questions:[
-["O â€” Overview","What do you see? What is the big picture?"],
-["P â€” Parts","What are the parts and details?"],
-["T â€” Title","How does the title connect to the visual?"],
-["I â€” Interrelationships","How are the parts connected?"],
-["C â€” Conclusion","What conclusion can you draw?"]
+["O — Overview","What do you see? What is the big picture?"],
+["P — Parts","What are the parts and details?"],
+["T — Title","How does the title connect to the visual?"],
+["I — Interrelationships","How are the parts connected?"],
+["C — Conclusion","What conclusion can you draw?"]
 ]
 },
 {
 id:"qtip",
 name:"Q-TIP",
-emoji:"â“",
+emoji:"❓",
 color:"purple",
 description:"Explore questions, troubles, intriguing ideas, and strengths.",
 steps:[
@@ -662,16 +662,16 @@ steps:[
 "Record your thinking."
 ],
 questions:[
-["Q â€” Questions","What questions do you have?"],
-["T â€” Troubles","What concerns you?"],
-["I â€” Intrigues","What interests you?"],
-["P â€” Propels","What strengths do you have in this area?"]
+["Q — Questions","What questions do you have?"],
+["T — Troubles","What concerns you?"],
+["I — Intrigues","What interests you?"],
+["P — Propels","What strengths do you have in this area?"]
 ]
 },
 {
 id:"hats",
 name:"Six Thinking Hats",
-emoji:"ðŸŽ©",
+emoji:"🎩",
 color:"gold",
 description:"Explore six different thinking perspectives.",
 steps:[
@@ -680,18 +680,18 @@ steps:[
 "Record and share your thinking."
 ],
 questions:[
-["âšª White Hat","What facts do we know?"],
-["ðŸ”´ Red Hat","What feelings are involved?"],
-["âš« Black Hat","What could go wrong?"],
-["ðŸŸ¡ Yellow Hat","What are the benefits?"],
-["ðŸŸ¢ Green Hat","What creative ideas are possible?"],
-["ðŸ”µ Blue Hat","What is our goal and next step?"]
+["⚪ White Hat","What facts do we know?"],
+["🔴 Red Hat","What feelings are involved?"],
+["⚫ Black Hat","What could go wrong?"],
+["🟡 Yellow Hat","What are the benefits?"],
+["🟢 Green Hat","What creative ideas are possible?"],
+["🔵 Blue Hat","What is our goal and next step?"]
 ]
 },
 {
 id:"circle",
-name:"Innerâ€“Outer Circle",
-emoji:"ðŸ”„",
+name:"Inner–Outer Circle",
+emoji:"🔄",
 color:"blue",
 description:"Observe the inner-circle discussion and record your thinking on the original organizer.",
 steps:[],
@@ -705,7 +705,7 @@ questions:[
 {
 id:"fruit",
 name:"Peel the Fruit",
-emoji:"ðŸŠ",
+emoji:"🍊",
 color:"green",
 description:"Use the original fruit organizer to explore an idea deeply.",
 steps:[],
@@ -721,7 +721,7 @@ questions:[
 {
 id:"chairs",
 name:"Philosophical Chairs",
-emoji:"ðŸª‘",
+emoji:"🪑",
 color:"pink",
 description:"Take a position, listen, and reconsider your thinking.",
 steps:[
@@ -732,16 +732,16 @@ steps:[
 "Reflect."
 ],
 questions:[
-["Before â€” My Position","Do you agree or disagree? Why?"],
-["During â€” Listening","What reasons did others share?"],
-["After â€” My Position","What is your position now?"],
+["Before — My Position","Do you agree or disagree? Why?"],
+["During — Listening","What reasons did others share?"],
+["After — My Position","What is your position now?"],
 ["Reflection","Did your opinion change? Why?"]
 ]
 },
 {
 id:"consensus",
 name:"Consensus Mats",
-emoji:"ðŸ¤",
+emoji:"🤝",
 color:"teal",
 description:"Develop a shared group response.",
 steps:[
@@ -761,7 +761,7 @@ questions:[
 {
 id:"mathchalk",
 name:"21st Century Chalk Talk",
-emoji:"ðŸ§®",
+emoji:"🧮",
 color:"blue",
 description:"Solve a math problem through four rounds.",
 steps:[
@@ -771,16 +771,16 @@ steps:[
 "Interpret your answer."
 ],
 questions:[
-["Round 1 â€” Identify","Which words matter most?"],
-["Round 2 â€” Explain","Why are they important?"],
-["Round 3 â€” Solve","Show your calculations."],
-["Round 4 â€” Interpret","Explain your answer."]
+["Round 1 — Identify","Which words matter most?"],
+["Round 2 — Explain","Why are they important?"],
+["Round 3 — Solve","Show your calculations."],
+["Round 4 — Interpret","Explain your answer."]
 ]
 },
 {
 id:"testchalk",
 name:"Test Genre Chalk Talk",
-emoji:"ðŸ“",
+emoji:"📝",
 color:"gold",
 description:"Discuss assessment strategies without answering the practice questions.",
 steps:[
@@ -800,7 +800,7 @@ questions:[
 {
 id:"render",
 name:"Text Rendering Protocol",
-emoji:"ðŸ“–",
+emoji:"📖",
 color:"purple",
 description:"Choose a meaningful sentence, phrase, and word.",
 steps:[
@@ -825,7 +825,7 @@ function makeCard(name,description,emoji,color,callback) {
   b.className = "game " + color;
   b.innerHTML =
     '<span class="emoji"></span><h3></h3><p></p>' +
-    '<span class="play">â–¶ Start Activity</span>';
+    '<span class="play">▶ Start Activity</span>';
   b.querySelector(".emoji").textContent = emoji;
   b.querySelector("h3").textContent = name;
   b.querySelector("p").textContent = description;
@@ -844,49 +844,49 @@ const elaGames = [
   [
     "Question Quest",
     "Ask and answer text-based questions.",
-    "ðŸ”Ž",
+    "🔎",
     "teal",
     "reading-evidence-games.html?game=quest"
   ],
   [
     "Evidence Treasure Hunt",
     "Find the sentence that proves an answer.",
-    "ðŸ—ï¸",
+    "🗝️",
     "gold",
     "reading-evidence-games.html?game=hunt"
   ],
   [
     "Answer on Trial",
     "Choose the answer best supported by the text.",
-    "âš–ï¸",
+    "⚖️",
     "purple",
     "reading-evidence-games.html?game=trial"
   ],
   [
     "Iceberg Investigator",
     "Tell explicit facts from inferences.",
-    "ðŸ§Š",
+    "🧊",
     "blue",
     "reading-evidence-games.html?game=iceberg"
   ],
   [
     "Inference Detective",
     "Connect clues to a reasonable inference.",
-    "ðŸ•µï¸",
+    "🕵️",
     "green",
     "reading-evidence-games.html?game=detective"
   ],
   [
     "Evidence Builder",
     "Write an answer with evidence and reasoning.",
-    "ðŸ§±",
+    "🧱",
     "pink",
     "reading-evidence-games.html?game=builder"
   ],
   [
     "Cargo Ship Diary: A Day at Sea",
     "Write a first-person diary entry about a day on a cargo ship.",
-    "ðŸš¢",
+    "🚢",
     "teal",
     "cargo-ship-diary.html"
   ]
@@ -984,7 +984,7 @@ function goHome(protocolsSection=false) {
 /*
   ORIGINAL WORKSHEET BACKGROUNDS
 
-  Innerâ€“Outer Circle and OPTIC use their
+  Inner–Outer Circle and OPTIC use their
   original PNG images.
 
   Peel the Fruit uses the NEW worksheet image,
@@ -1261,8 +1261,8 @@ function showStep() {
   document.getElementById("nextStep")
     .textContent =
     activeStep === p.questions.length-1
-      ? "Finish & Reflect â†’"
-      : "Next Step â†’";
+      ? "Finish & Reflect →"
+      : "Next Step →";
 
   const extras = document.getElementById("extraControls");
   extras.replaceChildren();
@@ -1371,7 +1371,7 @@ function saveWork() {
     );
 
     statusElement().textContent =
-      "âœ“ Notes saved in this browser.";
+      "✓ Notes saved in this browser.";
   } catch(e) {
     statusElement().textContent =
       "Could not save. Please export your notes.";
