@@ -9,22 +9,68 @@ const DATA={
 'Renaissance & Innovation':{sentences:['During the Renaissance, many artists studied the human body and the natural world.','They made careful sketches to record what they observed.','Some thinkers combined art, mathematics, and engineering in their work.','Sharing drawings and written ideas helped others learn from their discoveries.'],question:'What did artists make to record their observations?',answer:'Careful sketches.',evidence:1,inference:'Careful observation helped people develop and share new ideas.',clues:[0,1,3],weak:'Every Renaissance artist invented a flying machine.'},
 'Matter & Interactions':{sentences:['A student mixed sand and water in a clear jar.','After the jar sat still, much of the sand settled at the bottom.','The student carefully poured the water into another container.','Some sand remained in the original jar, showing that the materials could be separated by a physical process.'],question:'Where did much of the sand settle?',answer:'At the bottom of the jar.',evidence:1,inference:'Sand and water can be separated without creating a new substance.',clues:[1,2,3],weak:'The sand turned into a gas.'}
 };
+// Additional original text-evidence questions. Each round selects a different challenge.
+const EXTRA = {
+'Vikings':[
+ ['How did Viking crews power their ships?','They used both sails and oars.',2,'They relied only on horses.'],
+ ['What helped Vikings reach distant communities?','Their ships could travel across seas and along rivers.',3,'They traveled only by land.'],
+ ['What shape were Viking ships?','They were long and narrow.',0,'They were round and wide.']],
+'Ancient Rome':[
+ ['Why did Romans build roads?','To connect cities and distant parts of the empire.',0,'To keep merchants from traveling.'],
+ ['What helped create a firm road surface?','Several layers of materials.',1,'A single layer of leaves.'],
+ ['What did roads help move between communities?','People and goods.',3,'Only ocean ships.']],
+'Waves & Motion':[
+ ['What does a wave transfer?','Energy from one place to another.',0,'The entire pond to another location.'],
+ ['How does surface water mainly move as ripples pass?','Up and down.',2,'It disappears completely.'],
+ ['Does the same water travel all the way across the pond with a ripple?','No; the ripple pattern travels, but the same water does not.',3,'Yes; every drop crosses the pond.']],
+'Geology':[
+ ['What happens when new sediment layers form?','They press down on older layers.',1,'They instantly become fossils.'],
+ ['What can some sedimentary rocks preserve?','Fossils of organisms from long ago.',3,'Only fresh leaves.'],
+ ['How can sedimentary rock begin forming?','Layers of sediment build up over time.',0,'Sediment vanishes overnight.']],
+'Treasure Island & Adventure':[
+ ['What did Mara study on her map?','The mark beside the rocky shore.',0,'A mark in the desert.'],
+ ['What did Mara pack as clouds gathered?','A lantern and an extra coat.',2,'A boat and a bicycle.'],
+ ['When did Mara want her friends to return?','Before nightfall.',3,'After sunrise the next day.']],
+'Renaissance & Innovation':[
+ ['What did many Renaissance artists study?','The human body and the natural world.',0,'Only ocean currents.'],
+ ['Which subjects did some thinkers combine?','Art, mathematics, and engineering.',2,'Only music and cooking.'],
+ ['How did people help others learn from discoveries?','By sharing drawings and written ideas.',3,'By hiding every observation.']],
+'Matter & Interactions':[
+ ['What did the student mix in the jar?','Sand and water.',0,'Salt and oil.'],
+ ['What did the student do after the sand settled?','Carefully poured water into another container.',2,'Heated the jar until it melted.'],
+ ['What did the remaining sand show?','The materials could be separated physically.',3,'The sand had turned into gas.']]
+};
+let previousChallenge = '';
+function shuffled(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function selectChallenge(){
+ const chosen=$('topic').value;
+ const topics=chosen==='Mix All Topics'?Object.keys(DATA):[chosen];
+ const candidates=[];
+ topics.forEach(t=>{
+  const base=DATA[t];
+  candidates.push({topic:t,...base,question:base.question,answer:base.answer,evidence:base.evidence,weak:base.weak,key:t+':original'});
+  (EXTRA[t]||[]).forEach((item,i)=>candidates.push({topic:t,...base,question:item[0],answer:item[1],evidence:item[2],weak:item[3],key:t+':'+i}));
+ });
+ const pool=candidates.filter(x=>x.key!==previousChallenge);
+ const selected=pool[Math.floor(Math.random()*pool.length)]||candidates[0];
+ previousChallenge=selected.key;
+ return selected;
+}
 const GAMES=[['Question Quest','Create and answer a question that can be proved with the text.','quest'],['Evidence Treasure Hunt','Find the sentence that proves an answer.','hunt'],['Answer on Trial','Choose the strongest text-supported answer.','trial'],['Iceberg Investigator','Sort explicit statements and inferences.','iceberg'],['Inference Detective','Find clues and make a supported inference.','detective'],['Evidence Builder','Build an answer with evidence and reasoning.','builder']];
 const $=id=>document.getElementById(id);let game='',round=0,score=0,selected=-1,current=null;
-$('topic').innerHTML=Object.keys(DATA).map(k=>`<option>${k}</option>`).join('');
+$('topic').innerHTML='<option value="Mix All Topics">Mix All Topics (surprise me!)</option>'+Object.keys(DATA).map(k=>`<option>${k}</option>`).join('');
 function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 GAMES.forEach((g,i)=>{const b=document.createElement('button');b.className='card';b.innerHTML=`<strong>${safe(g[0])}</strong><p>${safe(g[1])}</p>`;b.onclick=()=>start(g[2]);$(i<3?'group1':'group2').append(b)});
 function home(){$('menu').classList.remove('hidden');$('play').classList.add('hidden')};$('home').onclick=home;$('back').onclick=home;
 function start(m){game=m;round=0;score=0;$('menu').classList.add('hidden');$('play').classList.remove('hidden');$('gameName').textContent=GAMES.find(g=>g[2]===m)[0];challenge()}
 function options(items){selected=-1;$('task').innerHTML+='<div class="options">'+items.map((v,i)=>`<button data-n="${i}">${safe(v)}</button>`).join('')+'</div>';$('task').querySelectorAll('.options button').forEach(b=>b.onclick=()=>{selected=+b.dataset.n;$('task').querySelectorAll('.options button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')})}
-function challenge(){round++;current=DATA[$('topic').value];$('score').textContent=`Round ${round} · Score ${score}`;$('feedback').textContent='Read carefully and complete the challenge.';$('passage').innerHTML=current.sentences.map((s,i)=>`<div class="sentence"><strong>[${i+1}]</strong> ${safe(s)}</div>`).join('');$('task').innerHTML='';$('check').disabled=false;const q=current;
+function challenge(){round++;current=selectChallenge();$('score').textContent=`Round ${round} · Score ${score}`;$('feedback').textContent='Read carefully and complete the challenge.';$('passage').innerHTML='<strong>Topic: '+safe(current.topic)+'</strong>'+current.sentences.map((s,i)=>`<div class="sentence"><strong>[${i+1}]</strong> ${safe(s)}</div>`).join('');$('task').innerHTML='';$('check').disabled=false;const q=current;
 if(game==='quest'){$('directions').textContent='Ask an answerable question about the passage. Then answer it and cite a numbered sentence.';$('task').innerHTML='<h3>Write your own text-based question</h3><textarea id="studentQuestion" placeholder="What, why, or how...? "></textarea><h3>Answer your question and cite a sentence number</h3><textarea id="studentAnswer" placeholder="According to sentence __, ..."></textarea><small>Teacher/self-check: The game checks completion and a sentence reference, not whether the reasoning is factually correct.</small>'}
 if(game==='hunt'){$('directions').textContent='Find the strongest evidence for the question.';$('task').innerHTML=`<h3>${safe(q.question)}</h3><p>Which sentence provides the answer?</p>`;options(q.sentences.map((s,i)=>`Sentence ${i+1}: ${s}`))}
-if(game==='trial'){$('directions').textContent='Choose the answer most strongly supported by the text.';$('task').innerHTML=`<h3>${safe(q.question)}</h3>`;const items=[q.answer,q.weak,'The text does not mention this topic at all.'];const rotated=round%3;const order=[...items.slice(rotated),...items.slice(0,rotated)];current._correct=order.indexOf(q.answer);options(order)}
-if(game==='iceberg'){const infer=round%2===0;current._infer=infer;$('directions').textContent='Is the statement directly stated, or inferred from clues?';$('task').innerHTML=`<h3>${safe(infer?q.inference:q.sentences[q.evidence])}</h3>`;options(['Explicit — stated directly','Inference — figured out from details'])}
+if(game==='trial'){$('directions').textContent='Choose the answer most strongly supported by the text.';$('task').innerHTML=`<h3>${safe(q.question)}</h3>`;const items=[q.answer,q.weak,'The passage gives no evidence for that answer.'];const order=shuffled(items);current._correct=order.indexOf(q.answer);options(order)}
+if(game==='iceberg'){const infer=Math.random()<0.5;current._infer=infer;$('directions').textContent='Is the statement directly stated, or inferred from clues?';$('task').innerHTML=`<h3>${safe(infer?q.inference:q.sentences[q.evidence])}</h3>`;options(['Explicit — stated directly','Inference — figured out from details'])}
 if(game==='detective'){$('directions').textContent='Use two or more text clues to explain a reasonable inference.';$('task').innerHTML=`<h3>Possible inference: ${safe(q.inference)}</h3><p>Select the sentence that best supports this inference.</p>`;options(q.sentences.map((s,i)=>`Sentence ${i+1}: ${s}`));$('task').insertAdjacentHTML('beforeend','<label for="reason">Explain how the clue supports the inference</label><textarea id="reason" placeholder="This detail suggests ... because ..."></textarea>')}
 if(game==='builder'){$('directions').textContent='Build a response with answer, evidence, and reasoning.';$('task').innerHTML=`<h3>${safe(q.question)}</h3><label for="claim">Answer the question</label><textarea id="claim"></textarea><label for="evidence">Quote or paraphrase a numbered text detail</label><textarea id="evidence" placeholder="In sentence __, ..."></textarea><label for="reason">Explain how the evidence supports your answer</label><textarea id="reason" placeholder="This proves my answer because ..."></textarea><small>Teacher/self-check: Writing is checked for completion, not factual accuracy.</small>`}}
-$('topic').onchange=()=>{if(game)challenge()};$('grade').onchange=()=>{if(game)challenge()};
+$('topic').onchange=()=>{previousChallenge='';if(game)challenge()};$('grade').onchange=()=>{if(game)challenge()};
 $('check').onclick=()=>{let ok=false,msg='',q=current;const val=id=>$(id)?.value.trim()||'';if(game==='quest'){ok=val('studentQuestion').length>=12&&val('studentAnswer').length>=25&&/\b(?:sentence|paragraph|line)\s*\d+\b|\[\d+\]/i.test(val('studentAnswer'));msg=ok?'You included a question, an answer, and a text reference. Now verify the evidence really supports your answer.':'Write a question, a developed answer, and an explicit sentence reference (for example, sentence 2).'}if(game==='hunt'){ok=selected===q.evidence;msg=ok?'Correct! Sentence '+(q.evidence+1)+' contains the evidence.':'Look again. The strongest evidence is sentence '+(q.evidence+1)+'.'}if(game==='trial'){ok=selected===q._correct;msg=ok?'Correct! The best answer is supported by sentence '+(q.evidence+1)+'.':'The supported answer is: '+q.answer+' (sentence '+(q.evidence+1)+').'}if(game==='iceberg'){ok=selected===(q._infer?1:0);msg=ok?'Correct! '+(q._infer?'This conclusion requires combining details.':'This information is stated in the passage.'):'Try again: '+(q._infer?'the author suggests this through clues.':'the author states this directly.')}if(game==='detective'){ok=q.clues.includes(selected)&&val('reason').length>=20;msg=ok?'Good evidence choice and explanation! Check whether your reasoning actually connects the clue to the inference.':'Choose a relevant clue and explain the connection in at least one complete sentence. Suggested clue: sentence '+(q.clues[0]+1)+'.'}if(game==='builder'){ok=val('claim').length>=10&&val('evidence').length>=15&&val('reason').length>=20&&/\b(?:sentence|paragraph|line)\s*\d+\b|\[\d+\]/i.test(val('evidence'));msg=ok?'All three parts are present! Reread to confirm the evidence and reasoning are accurate.':'Include a complete answer, a numbered text detail, and reasoning explaining how the evidence supports your answer.'}if(ok){score+=10;$('check').disabled=true}$('feedback').textContent=(ok?'✓ ':'↻ ')+msg;$('score').textContent=`Round ${round} · Score ${score}`};$('next').onclick=challenge;
-const requested=new URLSearchParams(location.search).get('game');if(GAMES.some(g=>g[2]===requested))start(requested);
 </script></body></html>
