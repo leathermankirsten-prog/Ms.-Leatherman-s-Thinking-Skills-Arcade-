@@ -449,6 +449,23 @@ onclick="document.getElementById('protocols').scrollIntoView({behavior:'smooth'}
 <h2 class="section-title">🎮 Choose Your Game</h2>
 <div class="games" id="gameGrid"></div>
 
+<section id="elaReview" aria-labelledby="elaTitle">
+  <h2 class="section-title" id="elaTitle">
+    📚 ELA Fall Interim Review
+  </h2>
+
+  <div class="protocol-intro">
+    <strong>Read • Question • Prove • Infer • Write</strong>
+    <p>
+      Practice text-based questions, strong evidence,
+      explicit details, inferences, and historical
+      narrative writing.
+    </p>
+  </div>
+
+  <div class="games" id="elaGameGrid"></div>
+</section>
+
 <section id="protocols">
 <h2 class="section-title">💬 Discussion Protocols</h2>
 <div class="protocol-intro">
@@ -817,6 +834,70 @@ games.forEach(g => {
   );
 });
 
+const elaGames = [
+  [
+    "Question Quest",
+    "Ask and answer text-based questions.",
+    "🔎",
+    "teal",
+    "reading-evidence-games.html?game=quest"
+  ],
+  [
+    "Evidence Treasure Hunt",
+    "Find the sentence that proves an answer.",
+    "🗝️",
+    "gold",
+    "reading-evidence-games.html?game=hunt"
+  ],
+  [
+    "Answer on Trial",
+    "Choose the answer best supported by the text.",
+    "⚖️",
+    "purple",
+    "reading-evidence-games.html?game=trial"
+  ],
+  [
+    "Iceberg Investigator",
+    "Tell explicit facts from inferences.",
+    "🧊",
+    "blue",
+    "reading-evidence-games.html?game=iceberg"
+  ],
+  [
+    "Inference Detective",
+    "Connect clues to a reasonable inference.",
+    "🕵️",
+    "green",
+    "reading-evidence-games.html?game=detective"
+  ],
+  [
+    "Evidence Builder",
+    "Write an answer with evidence and reasoning.",
+    "🧱",
+    "pink",
+    "reading-evidence-games.html?game=builder"
+  ],
+  [
+    "Cargo Ship Diary: A Day at Sea",
+    "Write a historically grounded first-person diary entry.",
+    "🚢",
+    "teal",
+    "cargo-ship-diary.html"
+  ]
+];
+
+elaGames.forEach(g => {
+  document.getElementById("elaGameGrid").appendChild(
+    makeCard(
+      g[0],
+      g[1],
+      g[2],
+      g[3],
+      () => openGame(g[0], g[4])
+    )
+  );
+});
+
 protocols.forEach(p => {
   document.getElementById("protocolGrid").appendChild(
     makeCard(p.name,p.description,p.emoji,p.color,
@@ -848,7 +929,7 @@ function openGame(name,id) {
 
   document.getElementById("playerTitle").textContent = name;
 
-  const standalone = id.endsWith(".html");
+  const standalone = /\.html(?:\?|$)/.test(id);
 
   frame.onload = () => {
     if(n !== loadNumber) return;
